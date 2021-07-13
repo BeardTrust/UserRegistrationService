@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author Nathanael <Nathanael.Grier at your.org>
  */
-@RequestMapping("/users")
+@RequestMapping(path = "/users")
 @RestController
 @CrossOrigin
 public class UserInfoController {

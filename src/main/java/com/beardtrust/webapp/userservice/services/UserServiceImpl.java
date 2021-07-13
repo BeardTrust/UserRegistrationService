@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User getById(int id) {
+	public UserEntity getById(String id) {
   
 		Optional<UserEntity> result = userRepo.findById(id);
 		
@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public void deleteById(int id) {
+	public void deleteById(String id) {
 		
 		Optional<UserEntity> result = userRepo.findById(id);
 		
