@@ -6,6 +6,7 @@ import com.beardtrust.webapp.userservice.services.UserService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,7 +48,7 @@ public class UserController {
 	
 	@GetMapping("/{id}")
   @PreAuthorize("hasAuthority('admin') or principal == #id")
-	public User displayUserById(@PathVariable int id) {
+	public UserEntity displayUserById(@PathVariable String id) {
 		return userService.getById(id);
 	}
 	
@@ -59,7 +60,7 @@ public class UserController {
 	
 	@DeleteMapping("/{id}")
   @PreAuthorize("hasAuthority('admin') or principal == #id")
-	public void deleteUser(@PathVariable int id){
+	public void deleteUser(@PathVariable String id){
 		userService.deleteById(id);
 	}
   

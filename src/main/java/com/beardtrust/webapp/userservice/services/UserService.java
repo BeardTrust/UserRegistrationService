@@ -5,11 +5,11 @@ import com.beardtrust.webapp.userservice.entities.UserEntity;
 
 public interface UserService {
 	
-	public List<User> getAll();
+	public List<UserEntity> getAll();
 	
-	public User getById(int id);
+	public UserEntity getById(String id);
 	
-	public void deleteById(int id);
+	public void deleteById(String id);
 	
 	public void save(UserEntity user);
 
