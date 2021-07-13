@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/users")
+@RequestMapping("/admin/users")
 public class UserController {
 	
 	private UserService userService;
