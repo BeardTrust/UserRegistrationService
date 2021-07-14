@@ -48,7 +48,6 @@ public class UserInfoControllerTest {
 				.andExpect(MockMvcResultMatchers.content().string("[]"));
 	}
 
-
 	@Test
 	public void testUpdateUser() throws Exception {
 		when(this.userInfoService.updateService((UserEntity) any(), anyString())).thenReturn("foo");
