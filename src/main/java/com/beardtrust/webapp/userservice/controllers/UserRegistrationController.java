@@ -54,4 +54,23 @@ public class UserRegistrationController {
 		}
 		return response;
 	}
+
+	/**
+	 * Display users response entity.
+	 *
+	 * @param id the id
+	 * @return the response entity
+	 */
+	@PreAuthorize("hasAuthority('admin') or principal == #id")
+	@GetMapping(path = "/id/{id}")
+	public ResponseEntity<UserDTO> displayUsers(@PathVariable("id") String id) {
+		ResponseEntity<UserDTO> response = null;
+		UserDTO userDetails = userRegistrationService.displayUser(id);
+		if (!userDetails.getUserId().equals("")) {
+			response = new ResponseEntity<>(userDetails, HttpStatus.OK);
+		} else {
+			response = new ResponseEntity<>(userDetails, HttpStatus.I_AM_A_TEAPOT);
+		}
+		return response;
+	}
 }
