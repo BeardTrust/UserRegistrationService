@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
  *
  * @author Nathanael <Nathanael.Grier at your.org>
  */
-@RequestMapping("/users")
+@RequestMapping(path = "/users")
 @RestController
 @CrossOrigin
 public class UserInfoController {
@@ -41,8 +41,8 @@ public class UserInfoController {
 	}
 
 	@PreAuthorize("hasAuthority('admin') or principal == #id")
-	@PostMapping("/id/{id}")
-	public Optional<UserEntity> getSpecificUserInfos(@PathVariable String account_id) {
-		return us.getSpecificUserInfos(account_id);
+	@GetMapping("/id/{id}")
+	public Optional<UserEntity> getSpecificUserInfos(@PathVariable String id) {
+		return us.getSpecificUserInfos(id);
 	}
 }

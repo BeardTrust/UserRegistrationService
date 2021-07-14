@@ -17,30 +17,33 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserInfoService {
+    
+    private UserRepository repo;
+    
+    public UserInfoService(UserRepository repo) {
+        this.repo = repo;
+    }
+    
+    public String updateService(UserEntity u, String id) {
+        Optional<UserEntity> ouser = repo.findById(id);
+        if (ouser.isPresent()) {
+            u.setUserId(ouser.get().getUserId());
+            u.setRole(ouser.get().getRole());
+            repo.save(u);
+            return "Update complete!";
+        } else {
+            return "Entity not found!";
+        }
+        
+    }
+    //Admin Access required
 
-	private UserRepository repo;
-
-	public UserInfoService(UserRepository repo) {
-		this.repo = repo;
-	}
-
-	public String updateService(UserEntity u, String id) {
-		Optional<UserEntity> ouser = repo.findById(id);
-		if (ouser.isPresent()) {
-			repo.save(u);
-			return "Update complete!";
-		} else {
-			return "Entity not found!";
-		}
-
-	}
-	//Admin Access required
-	public List<UserEntity> getAllUserInfos() {
-		return repo.findAll();
-	}
-
-	public Optional<UserEntity> getSpecificUserInfos(String account_id) {
-		return repo.findById(account_id);
-	}
-
+    public List<UserEntity> getAllUserInfos() {
+        return repo.findAll();
+    }
+    
+    public Optional<UserEntity> getSpecificUserInfos(String account_id) {
+        return repo.findById(account_id);
+    }
+    
 }

@@ -1,7 +1,6 @@
 package com.beardtrust.webapp.userservice.controllers;
 
 import com.beardtrust.webapp.userservice.entities.UserEntity;
-
 import com.beardtrust.webapp.userservice.services.UserService;
 
 import java.util.List;
@@ -36,7 +35,7 @@ public class UserController {
 	}
 	
 	@PostMapping()
-	@PreAuthorize("hasAuthority('admin')")
+  @PreAuthorize("hasAuthority('admin')")
 	public void createUser(@RequestBody UserEntity user) {
 		userService.save(user);
 	}
@@ -52,7 +51,7 @@ public class UserController {
 	public UserEntity displayUserById(@PathVariable String id) {
 		return userService.getById(id);
 	}
-	
+
 	@PutMapping("/id/{id}")
 	@PreAuthorize("hasAuthority('admin')")
 	public void updateUser(@RequestBody UserEntity user, @PathVariable String id) {
