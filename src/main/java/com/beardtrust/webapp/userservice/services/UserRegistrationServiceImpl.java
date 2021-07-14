@@ -1,6 +1,7 @@
 package com.beardtrust.webapp.userservice.services;
 
 import com.beardtrust.webapp.userservice.dtos.UserDTO;
+
 import com.beardtrust.webapp.userservice.entities.UserEntity;
 import com.beardtrust.webapp.userservice.models.UserRegistration;
 import com.beardtrust.webapp.userservice.repos.UserRepository;
