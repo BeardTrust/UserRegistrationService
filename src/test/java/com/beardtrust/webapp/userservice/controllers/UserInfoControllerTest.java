@@ -49,15 +49,6 @@ public class UserInfoControllerTest {
 	}
 
 	@Test
-	public void testGetSpecificUserInfos() throws Exception {
-		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/users/id/{id}", "42");
-		ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(this.userInfoController)
-				.build()
-				.perform(requestBuilder);
-		actualPerformResult.andExpect(MockMvcResultMatchers.status().is(500));
-	}
-
-	@Test
 	public void testUpdateUser() throws Exception {
 		when(this.userInfoService.updateService((UserEntity) any(), anyString())).thenReturn("foo");
 
