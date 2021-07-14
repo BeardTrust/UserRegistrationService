@@ -1,7 +1,7 @@
 package com.beardtrust.webapp.userservice.security;
 
-
 import com.beardtrust.webapp.userservice.dtos.UserDTO;
+
 import com.beardtrust.webapp.userservice.services.AuthorizationService;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
