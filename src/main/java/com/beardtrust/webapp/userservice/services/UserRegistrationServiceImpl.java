@@ -46,7 +46,17 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	@Override
 	public String registerUser(UserRegistration userRegistration) {
 		userRegistration.setPassword(passwordEncoder.encode(userRegistration.getPassword()));
+
 		UserEntity userEntity = userRepository.findByEmail(userRegistration.getEmail());
+
+		if(userEntity == null) {
+			userEntity = userRepository.findByUsername(userRegistration.getUsername());
+		}
+
+		if(userEntity == null) {
+			userEntity = userRepository.findByPhone(userRegistration.getPhone());
+		}
+
 		UserDTO userDTO = null;
 		if (userEntity == null) {
 			log.info("Attempting to save user " + userRegistration.getUsername() + " to database");
@@ -54,20 +64,22 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 				ModelMapper modelMapper = new ModelMapper();
 				modelMapper.getConfiguration()
 						.setMatchingStrategy(MatchingStrategies.STRICT);
+
 				userEntity = modelMapper.map(userRegistration, UserEntity.class);
 				userEntity.setUserId(UUID.randomUUID().toString());
 				userEntity.setRole("user");
+
 				userDTO = modelMapper.map(userRepository.save(userEntity), UserDTO.class);
 
+				log.info("UserEntity " + userRegistration.getUsername() + " saved to database");
 			} catch (Exception e) {
 				log.error("Failed to save user " + userRegistration.getUsername() + " to database");
 			}
-			log.info("UserEntity " + userRegistration.getUsername() + " saved to database");
 		} else {
 			throwDuplicateEntryException(userRegistration, userEntity);
 		}
 
-		return userDTO.getUserId();
+		return userDTO != null ? userDTO.getUserId() : null;
 	}
 
 	/**
@@ -93,8 +105,8 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 				registrationPhone.equals(entityPhone)) {
 			log.error(String.format("User with email of '%s', username of '%s', and phone number of '%s' already" +
 					" exists in database", registrationEmail, registrationUsername, registrationPhone));
-			throw new DuplicateEntryException(String.format("User with this email, username, and phone number " +
-					"already exists"));
+			throw new DuplicateEntryException("User with this email, username, and phone number " +
+					"already exists");
 		}
 
 		if(registrationEmail.equals(entityEmail)) {

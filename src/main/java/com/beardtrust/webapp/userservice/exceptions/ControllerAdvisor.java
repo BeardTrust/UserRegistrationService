@@ -17,6 +17,8 @@ import java.util.Map;
 
 /**
  * The type Controller advisor.
+ *
+ * @author Matthew Crowell <Matthew.Crowell@Smoothstack.com>
  */
 @ControllerAdvice
 @Slf4j
@@ -54,4 +56,6 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
 		return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
 	}
+
+
 }
