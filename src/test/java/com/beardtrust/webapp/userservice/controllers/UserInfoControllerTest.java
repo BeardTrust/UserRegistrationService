@@ -48,6 +48,14 @@ public class UserInfoControllerTest {
 				.andExpect(MockMvcResultMatchers.content().string("[]"));
 	}
 
+	@Test
+	public void testGetSpecificUserInfos() throws Exception {
+		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/users/id/{id}", "42");
+		ResultActions actualPerformResult = MockMvcBuilders.standaloneSetup(this.userInfoController)
+				.build()
+				.perform(requestBuilder);
+		actualPerformResult.andExpect(MockMvcResultMatchers.status().is(500));
+	}
 
 	@Test
 	public void testUpdateUser() throws Exception {
