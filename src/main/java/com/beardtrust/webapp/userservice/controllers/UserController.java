@@ -46,20 +46,20 @@ public class UserController {
 		return userService.getAll();
 	}
 	
-	@GetMapping("/id/{id}")
+	@GetMapping("/{id}")
 	@PreAuthorize("hasAuthority('admin') or principal == #id")
 	public UserEntity displayUserById(@PathVariable String id) {
 		return userService.getById(id);
 	}
 
-	@PutMapping("/id/{id}")
+	@PutMapping("/{id}")
 	@PreAuthorize("hasAuthority('admin')")
 	public void updateUser(@RequestBody UserEntity user, @PathVariable String id) {
 		
 		userService.save(user);
 	}
 	
-	@DeleteMapping("/id/{id}")
+	@DeleteMapping("/{id}")
 	@PreAuthorize("hasAuthority('admin') or principal == #id")
 	public void deleteUser(@PathVariable String id){
 		userService.deleteById(id);

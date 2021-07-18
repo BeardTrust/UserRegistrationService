@@ -3,6 +3,7 @@ package com.beardtrust.webapp.userservice.services;
 import com.beardtrust.webapp.userservice.dtos.UserDTO;
 
 import com.beardtrust.webapp.userservice.entities.UserEntity;
+import com.beardtrust.webapp.userservice.exceptions.DuplicateEntryException;
 import com.beardtrust.webapp.userservice.models.UserRegistration;
 import com.beardtrust.webapp.userservice.repos.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -43,7 +44,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	}
 
 	@Override
-	public UserDTO registerUser(UserRegistration userRegistration) {
+	public String registerUser(UserRegistration userRegistration) {
 		userRegistration.setPassword(passwordEncoder.encode(userRegistration.getPassword()));
 		UserEntity userEntity = userRepository.findByEmail(userRegistration.getEmail());
 		UserDTO userDTO = null;
@@ -55,6 +56,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 						.setMatchingStrategy(MatchingStrategies.STRICT);
 				userEntity = modelMapper.map(userRegistration, UserEntity.class);
 				userEntity.setUserId(UUID.randomUUID().toString());
+				userEntity.setRole("user");
 				userDTO = modelMapper.map(userRepository.save(userEntity), UserDTO.class);
 
 			} catch (Exception e) {
@@ -62,12 +64,56 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 			}
 			log.info("UserEntity " + userRegistration.getUsername() + " saved to database");
 		} else {
-			log.error("User " + userRegistration.getUsername() + " cannot be saved due to duplicate " +
-					"values in database");
-			userDTO = new UserDTO();
+			throwDuplicateEntryException(userRegistration, userEntity);
 		}
 
-		return userDTO;
+		return userDTO.getUserId();
+	}
+
+	/**
+	 * This method throws an appropriate duplicate entry exception.
+	 *
+	 * @param userRegistration UserRegistration the user registration object
+	 * @param userEntity UserEntity the user entity found in the database
+	 */
+	private void throwDuplicateEntryException(UserRegistration userRegistration, UserEntity userEntity) {
+		log.error("User " + userRegistration.getUsername() + " cannot be saved due to duplicate " +
+				"values in database");
+
+		String registrationEmail = userRegistration.getEmail();
+		String entityEmail = userEntity.getEmail();
+
+		String registrationUsername = userRegistration.getUsername();
+		String entityUsername = userEntity.getUsername();
+
+		String registrationPhone = userRegistration.getPhone();
+		String entityPhone = userEntity.getPhone();
+
+		if(registrationEmail.equals(entityEmail) && registrationUsername.equals(entityUsername) &&
+				registrationPhone.equals(entityPhone)) {
+			log.error(String.format("User with email of '%s', username of '%s', and phone number of '%s' already" +
+					" exists in database", registrationEmail, registrationUsername, registrationPhone));
+			throw new DuplicateEntryException(String.format("User with this email, username, and phone number " +
+					"already exists"));
+		}
+
+		if(registrationEmail.equals(entityEmail)) {
+			log.error(String.format("Email address '%s' already present in database", entityEmail));
+			throw new DuplicateEntryException(String.format("email address '%s' already registered",
+					entityEmail));
+		}
+
+		if(registrationUsername.equals(entityUsername)) {
+			log.error(String.format("Username '%s' already present in database", entityUsername));
+			throw new DuplicateEntryException(String.format("username '%s' already registered",
+					entityUsername));
+		}
+
+		if(registrationPhone.equals(entityPhone)) {
+			log.error(String.format("Phone number '%s' already present in database", entityPhone));
+			throw new DuplicateEntryException(String.format("phone number '%s' already registered",
+					entityPhone));
+		}
 	}
 
 	@Override

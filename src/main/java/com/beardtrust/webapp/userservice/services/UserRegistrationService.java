@@ -15,9 +15,9 @@ public interface UserRegistrationService extends UserDetailsService {
 	 * Register user user.
 	 *
 	 * @param user the user
-	 * @return the user
+	 * @return the user's user id
 	 */
-	UserDTO registerUser(UserRegistration user);
+	String registerUser(UserRegistration user);
 
 
 	/**

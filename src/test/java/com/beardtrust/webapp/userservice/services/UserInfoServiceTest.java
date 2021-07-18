@@ -142,5 +142,26 @@ public class UserInfoServiceTest {
 		verify(this.userRepository).findById(anyString());
 		assertTrue(this.userInfoService.getAllUserInfos().isEmpty());
 	}
+
+	@Test
+	public void testGetSpecificUserInfos2() {
+		UserEntity userEntity = new UserEntity();
+		userEntity.setLastName("Doe");
+		userEntity.setPassword("iloveyou");
+		userEntity.setEmail("jane.doe@example.org");
+		userEntity.setRole("Role");
+		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
+		userEntity.setUserId("42");
+		userEntity.setUsername("janedoe");
+		userEntity.setPhone("4105551212");
+		userEntity.setFirstName("Jane");
+		Optional<UserEntity> ofResult = Optional.<UserEntity>of(userEntity);
+		when(this.userRepository.findById(anyString())).thenReturn(ofResult);
+		Optional<UserEntity> actualSpecificUserInfos = this.userInfoService.getSpecificUserInfos("Account id");
+		assertSame(ofResult, actualSpecificUserInfos);
+		assertTrue(actualSpecificUserInfos.isPresent());
+		verify(this.userRepository).findById(anyString());
+		assertTrue(this.userInfoService.getAllUserInfos().isEmpty());
+	}
 }
 

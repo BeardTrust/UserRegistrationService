@@ -44,14 +44,13 @@ public class UserRegistrationController {
 	 */
 	@PostMapping
 	@Consumes({MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<UserDTO> registerUser(@Valid @RequestBody UserRegistration body) {
-		ResponseEntity<UserDTO> response;
-		UserDTO user = userRegistrationService.registerUser(body);
-		if (user.getUserId() != null) {
-			response = new ResponseEntity<>(user, HttpStatus.CREATED);
-		} else {
-			response = new ResponseEntity<>(user, HttpStatus.CONFLICT);
+	public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegistration body) {
+		ResponseEntity<String> response = null;
+		String userId = userRegistrationService.registerUser(body);
+		if (userId != null) {
+			response = new ResponseEntity<>(userId, HttpStatus.CREATED);
 		}
+
 		return response;
 	}
 }

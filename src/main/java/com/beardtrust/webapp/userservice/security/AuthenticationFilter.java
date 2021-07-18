@@ -104,7 +104,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 				.signWith(SignatureAlgorithm.HS512, environment.getProperty("token.secret"))
 				.compact();
 
-		response.addHeader("token", token);
+		response.addHeader("Authorization", environment.getProperty("authorization.token.header.prefix") + " " + token);
 
 		log.info("User " + userDetails.getEmail() + " authenticated");
 	}
