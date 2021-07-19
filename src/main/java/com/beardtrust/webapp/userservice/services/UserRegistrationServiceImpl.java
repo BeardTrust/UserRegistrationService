@@ -45,32 +45,15 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 
 	@Override
 	public String registerUser(UserRegistration userRegistration) {
-		userRegistration.setPassword(passwordEncoder.encode(userRegistration.getPassword()));
-
-		UserEntity userEntity = userRepository.findByEmail(userRegistration.getEmail());
-
-		if(userEntity == null) {
-			userEntity = userRepository.findByUsername(userRegistration.getUsername());
-		}
-
-		if(userEntity == null) {
-			userEntity = userRepository.findByPhone(userRegistration.getPhone());
-		}
+		UserEntity userEntity = null;
+		userEntity = searchRepositoryForDuplicates(userRegistration);
 
 		UserDTO userDTO = null;
+
 		if (userEntity == null) {
 			log.info("Attempting to save user " + userRegistration.getUsername() + " to database");
 			try {
-				ModelMapper modelMapper = new ModelMapper();
-				modelMapper.getConfiguration()
-						.setMatchingStrategy(MatchingStrategies.STRICT);
-
-				userEntity = modelMapper.map(userRegistration, UserEntity.class);
-				userEntity.setUserId(UUID.randomUUID().toString());
-				userEntity.setRole("user");
-
-				userDTO = modelMapper.map(userRepository.save(userEntity), UserDTO.class);
-
+				userDTO = createUser(userRegistration);
 				log.info("UserEntity " + userRegistration.getUsername() + " saved to database");
 			} catch (Exception e) {
 				log.error("Failed to save user " + userRegistration.getUsername() + " to database");
@@ -80,6 +63,49 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		}
 
 		return userDTO != null ? userDTO.getUserId() : null;
+	}
+
+	/**
+	 * This method creates a UserEntity object from the provided UserRegistration, saves that UserEntity to the
+	 * database and then returns a UserDTO created from the saved UserEntity.
+	 *
+	 * @param userRegistration UserRegistration the registration data sent to the server
+	 * @return UserDTO a new UserDTO for the UserEntity saved in the database
+	 */
+	private UserDTO createUser(UserRegistration userRegistration){
+		userRegistration.setPassword(passwordEncoder.encode(userRegistration.getPassword()));
+		ModelMapper modelMapper = new ModelMapper();
+		modelMapper.getConfiguration()
+				.setMatchingStrategy(MatchingStrategies.STRICT);
+
+		UserEntity userEntity = null;
+
+		userEntity = modelMapper.map(userRegistration, UserEntity.class);
+		userEntity.setUserId(UUID.randomUUID().toString());
+		userEntity.setRole("user");
+		UserDTO userDTO = modelMapper.map(userRepository.save(userEntity), UserDTO.class);
+		return userDTO;
+	}
+
+	/**
+	 * This method searches for a user in the database, locating any user with associated fields
+	 * that are required to be unique, including email address, username, and phone number.
+	 *
+	 * @param userRegistration UserRegistration the user registration details
+	 * @return UserEntity a UserEntity object representing the user as found in the database
+	 */
+	private UserEntity searchRepositoryForDuplicates(UserRegistration userRegistration) {
+		UserEntity userEntity;
+		userEntity = userRepository.findByEmail(userRegistration.getEmail());
+
+		if(userEntity == null) {
+			userEntity = userRepository.findByUsername(userRegistration.getUsername());
+		}
+
+		if(userEntity == null) {
+			userEntity = userRepository.findByPhone(userRegistration.getPhone());
+		}
+		return userEntity;
 	}
 
 	/**
