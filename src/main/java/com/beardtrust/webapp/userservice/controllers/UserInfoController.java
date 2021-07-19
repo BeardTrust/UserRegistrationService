@@ -29,7 +29,7 @@ public class UserInfoController {
 	private UserInfoService us = new UserInfoService(repo);
 
 	@PreAuthorize("hasAuthority('admin') or principal == #id")
-	@PutMapping("/id/{id}")
+	@PutMapping("/{id}")
 	public String updateUser(@RequestBody UserEntity u, @PathVariable String id) {
 		return us.updateService(u, id);
 	}
@@ -41,7 +41,7 @@ public class UserInfoController {
 	}
 
 	@PreAuthorize("hasAuthority('admin') or principal == #id")
-	@GetMapping("/id/{id}")
+	@GetMapping("/{id}")
 	public Optional<UserEntity> getSpecificUserInfos(@PathVariable String id) {
 		return us.getSpecificUserInfos(id);
 	}

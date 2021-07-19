@@ -10,7 +10,7 @@ management:
   server:
     port: ${ACTPORT:0}
 gateway:
-  ip: ${GATEWAY:localhost}
+  ip: ${GATEWAY:192.168.0.10}
 spring:
   application:
     name: ${NAME:user-service}
@@ -33,7 +33,7 @@ authorization:
       prefix: Bearer
 token:
   secret: aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj04WnEzS0NCZWQ1UQo=
-  expiration: 864000
+  expiration: 864000000
 login:
   url:
     path: /login

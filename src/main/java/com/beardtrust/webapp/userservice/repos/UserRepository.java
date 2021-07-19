@@ -19,4 +19,20 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
 	 * @return the user entity
 	 */
 	UserEntity findByEmail(String s);
+
+	/**
+	 * Find a user entity by phone number
+	 *
+	 * @param s String phone number
+	 * @return UserEntity user entity
+	 */
+	UserEntity findByPhone(String s);
+
+	/**
+	 * Find a user entity by username.
+	 *
+	 * @param s String username
+	 * @return the user entity
+	 */
+	UserEntity findByUsername(String s);
 }

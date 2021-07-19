@@ -1,7 +1,6 @@
 package com.beardtrust.webapp.userservice.security;
 
 import com.beardtrust.webapp.userservice.dtos.UserDTO;
-
 import com.beardtrust.webapp.userservice.services.AuthorizationService;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
@@ -37,10 +36,11 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 	 *
 	 * @param authenticationManager the authentication manager
 	 * @param environment           the environment
-	 * @param authorizationService
+	 * @param authorizationService  the authorization service
 	 */
 	@Autowired
-	public AuthorizationFilter(AuthenticationManager authenticationManager, Environment environment, AuthorizationService authorizationService) {
+	public AuthorizationFilter(AuthenticationManager authenticationManager, Environment environment,
+							   AuthorizationService authorizationService) {
 		super(authenticationManager);
 		this.environment = environment;
 		this.authorizationService = authorizationService;
@@ -76,7 +76,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 		UsernamePasswordAuthenticationToken authenticationToken = null;
 		if (authorizationHeader != null) {
 			String token = authorizationHeader.replace(environment.getProperty("authorization.token" +
-					".header.prefix"), "");
+					".header.prefix") + " ", "");
 
 			String userId = Jwts.parser()
 					.setSigningKey(environment.getProperty("token.secret"))
