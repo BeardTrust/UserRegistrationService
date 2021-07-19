@@ -1,7 +1,6 @@
 package com.beardtrust.webapp.userservice.services;
 
 import com.beardtrust.webapp.userservice.dtos.UserDTO;
-
 import com.beardtrust.webapp.userservice.entities.UserEntity;
 import com.beardtrust.webapp.userservice.exceptions.DuplicateEntryException;
 import com.beardtrust.webapp.userservice.models.UserRegistration;
@@ -45,8 +44,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 
 	@Override
 	public String registerUser(UserRegistration userRegistration) {
-		UserEntity userEntity = null;
-		userEntity = searchRepositoryForDuplicates(userRegistration);
+		UserEntity userEntity = searchRepositoryForDuplicates(userRegistration);
 
 		UserDTO userDTO = null;
 
@@ -72,19 +70,16 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	 * @param userRegistration UserRegistration the registration data sent to the server
 	 * @return UserDTO a new UserDTO for the UserEntity saved in the database
 	 */
-	private UserDTO createUser(UserRegistration userRegistration){
+	private UserDTO createUser(UserRegistration userRegistration) {
 		userRegistration.setPassword(passwordEncoder.encode(userRegistration.getPassword()));
 		ModelMapper modelMapper = new ModelMapper();
-		modelMapper.getConfiguration()
-				.setMatchingStrategy(MatchingStrategies.STRICT);
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
-		UserEntity userEntity = null;
-
-		userEntity = modelMapper.map(userRegistration, UserEntity.class);
+		UserEntity userEntity = modelMapper.map(userRegistration, UserEntity.class);
 		userEntity.setUserId(UUID.randomUUID().toString());
 		userEntity.setRole("user");
-		UserDTO userDTO = modelMapper.map(userRepository.save(userEntity), UserDTO.class);
-		return userDTO;
+
+		return modelMapper.map(userRepository.save(userEntity), UserDTO.class);
 	}
 
 	/**
@@ -98,11 +93,11 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		UserEntity userEntity;
 		userEntity = userRepository.findByEmail(userRegistration.getEmail());
 
-		if(userEntity == null) {
+		if (userEntity == null) {
 			userEntity = userRepository.findByUsername(userRegistration.getUsername());
 		}
 
-		if(userEntity == null) {
+		if (userEntity == null) {
 			userEntity = userRepository.findByPhone(userRegistration.getPhone());
 		}
 		return userEntity;
@@ -112,7 +107,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 	 * This method throws an appropriate duplicate entry exception.
 	 *
 	 * @param userRegistration UserRegistration the user registration object
-	 * @param userEntity UserEntity the user entity found in the database
+	 * @param userEntity       UserEntity the user entity found in the database
 	 */
 	private void throwDuplicateEntryException(UserRegistration userRegistration, UserEntity userEntity) {
 		log.error("User " + userRegistration.getUsername() + " cannot be saved due to duplicate " +
@@ -127,7 +122,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 		String registrationPhone = userRegistration.getPhone();
 		String entityPhone = userEntity.getPhone();
 
-		if(registrationEmail.equals(entityEmail) && registrationUsername.equals(entityUsername) &&
+		if (registrationEmail.equals(entityEmail) && registrationUsername.equals(entityUsername) &&
 				registrationPhone.equals(entityPhone)) {
 			log.error(String.format("User with email of '%s', username of '%s', and phone number of '%s' already" +
 					" exists in database", registrationEmail, registrationUsername, registrationPhone));
@@ -135,19 +130,19 @@ public class UserRegistrationServiceImpl implements UserRegistrationService {
 					"already exists");
 		}
 
-		if(registrationEmail.equals(entityEmail)) {
+		if (registrationEmail.equals(entityEmail)) {
 			log.error(String.format("Email address '%s' already present in database", entityEmail));
 			throw new DuplicateEntryException(String.format("email address '%s' already registered",
 					entityEmail));
 		}
 
-		if(registrationUsername.equals(entityUsername)) {
+		if (registrationUsername.equals(entityUsername)) {
 			log.error(String.format("Username '%s' already present in database", entityUsername));
 			throw new DuplicateEntryException(String.format("username '%s' already registered",
 					entityUsername));
 		}
 
-		if(registrationPhone.equals(entityPhone)) {
+		if (registrationPhone.equals(entityPhone)) {
 			log.error(String.format("Phone number '%s' already present in database", entityPhone));
 			throw new DuplicateEntryException(String.format("phone number '%s' already registered",
 					entityPhone));

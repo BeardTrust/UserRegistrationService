@@ -53,7 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		http.authorizeRequests()
+		http.cors()
+				.and().authorizeRequests()
 				.antMatchers(HttpMethod.POST, "/users").hasIpAddress(environment.getProperty("gateway.ip"))
 				.antMatchers(HttpMethod.POST, "/login").hasIpAddress(environment.getProperty("gateway.ip"))
 				.antMatchers("/h2-console/**").permitAll()
