@@ -19,7 +19,6 @@ import javax.ws.rs.Consumes;
  */
 @RestController
 @RequestMapping(path = "/users")
-@CrossOrigin(origins = "*")
 public class UserRegistrationController {
 
 	private final UserRegistrationService userRegistrationService;
