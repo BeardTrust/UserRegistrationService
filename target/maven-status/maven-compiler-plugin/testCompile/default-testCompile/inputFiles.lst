@@ -1,0 +1,14 @@
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/controllers/UserInfoControllerTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/security/AuthorizationFilterTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/dtos/UserDTOTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/repos/UserRepositoryTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/models/UserRegistrationTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/services/UserInfoServiceTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/services/AuthenticationServiceImplTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/services/AuthorizationServiceImplTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/security/AuthenticationFilterTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/models/LoginRequestModelTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/controllers/UserRegistrationControllerTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/services/UserRegistrationServiceImplTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/repos/AuthorizationRepositoryTest.java
+/stor/Coding/test2/UserService/src/test/java/com/beardtrust/webapp/userservice/entities/UserEntityTest.java
