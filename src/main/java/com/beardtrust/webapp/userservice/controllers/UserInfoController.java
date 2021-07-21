@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RequestMapping(path = "/users")
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class UserInfoController {
 
 	@Autowired
