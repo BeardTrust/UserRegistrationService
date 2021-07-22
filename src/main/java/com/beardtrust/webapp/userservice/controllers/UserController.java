@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@CrossOrigin(origins = "*")
 @RequestMapping("/admin/users")
 public class UserController {
 	
