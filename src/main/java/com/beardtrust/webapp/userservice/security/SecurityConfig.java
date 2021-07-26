@@ -55,8 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http.cors()
 				.and().authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/users").hasIpAddress(environment.getProperty("gateway.ip"))
-				.antMatchers(HttpMethod.POST, "/login").hasIpAddress(environment.getProperty("gateway.ip"))
+				.antMatchers(HttpMethod.POST, "/users").permitAll()
+				.antMatchers(HttpMethod.POST, "/login").permitAll()
 				.antMatchers("/h2-console/**").permitAll()
 				.anyRequest().authenticated()
 				.and()
