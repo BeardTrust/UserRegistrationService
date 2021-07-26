@@ -105,7 +105,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 				.compact();
 
 		response.addHeader("Authorization", environment.getProperty("authorization.token.header.prefix") + " " + token);
-
+        response.addHeader("BTUID", userDetails.getUserId());
 		log.info("User " + userDetails.getEmail() + " authenticated");
 	}
 }
