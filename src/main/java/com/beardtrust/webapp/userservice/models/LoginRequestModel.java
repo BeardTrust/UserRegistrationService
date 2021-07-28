@@ -11,4 +11,5 @@ import lombok.Data;
 public class LoginRequestModel {
 	private String email;
 	private String password;
+	private String role;
 }
