@@ -1,0 +1,14 @@
+com/beardtrust/webapp/userservice/dtos/UserDTOTest.class
+com/beardtrust/webapp/userservice/services/UserRegistrationServiceImplTest.class
+com/beardtrust/webapp/userservice/security/AuthorizationFilterTest.class
+com/beardtrust/webapp/userservice/services/AuthorizationServiceImplTest.class
+com/beardtrust/webapp/userservice/controllers/UserRegistrationControllerTest.class
+com/beardtrust/webapp/userservice/security/AuthenticationFilterTest.class
+com/beardtrust/webapp/userservice/models/UserRegistrationTest.class
+com/beardtrust/webapp/userservice/models/LoginRequestModelTest.class
+com/beardtrust/webapp/userservice/repos/UserRepositoryTest.class
+com/beardtrust/webapp/userservice/repos/AuthorizationRepositoryTest.class
+com/beardtrust/webapp/userservice/services/UserInfoServiceTest.class
+com/beardtrust/webapp/userservice/services/AuthenticationServiceImplTest.class
+com/beardtrust/webapp/userservice/entities/UserEntityTest.class
+com/beardtrust/webapp/userservice/controllers/UserInfoControllerTest.class

@@ -35,6 +35,7 @@ import java.util.List;
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	private final AuthenticationService authenticationService;
 	private final Environment environment;
+	private final String ROLE_REQUEST_MISMATCH = "Role does not match authentication role request";
 
 	/**
 	 * Instantiates a new Authentication filter.
@@ -65,16 +66,22 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 			UserDTO userDTO = authenticationService.getUserDetailsByEmail(credentials.getEmail());
 
-			if (userDTO.getRole().equals("admin")) {
-				SimpleGrantedAuthority admin = new SimpleGrantedAuthority("admin");
-				authorities.add(admin);
-			} else if (userDTO.getRole().equals("user")) {
-				SimpleGrantedAuthority user = new SimpleGrantedAuthority("user");
-				authorities.add(user);
-			}
+			UsernamePasswordAuthenticationToken token = null;
 
-			UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(credentials.getEmail(),
-					credentials.getPassword(), authorities);
+			if(request.getHeader("LR-Type").equals(userDTO.getRole())){
+				if (userDTO.getRole().equals("admin")) {
+					SimpleGrantedAuthority admin = new SimpleGrantedAuthority("admin");
+					authorities.add(admin);
+				} else if (userDTO.getRole().equals("user")) {
+					SimpleGrantedAuthority user = new SimpleGrantedAuthority("user");
+					authorities.add(user);
+				}
+
+				token = new UsernamePasswordAuthenticationToken(credentials.getEmail(),
+						credentials.getPassword(), authorities);
+			} else {
+				token = new UsernamePasswordAuthenticationToken(ROLE_REQUEST_MISMATCH, ROLE_REQUEST_MISMATCH, authorities);
+			}
 
 			auth = getAuthenticationManager().authenticate(token);
 		} catch (IOException e) {
@@ -105,7 +112,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 				.compact();
 
 		response.addHeader("Authorization", environment.getProperty("authorization.token.header.prefix") + " " + token);
-
+        response.addHeader("BTUID", userDetails.getUserId());
 		log.info("User " + userDetails.getEmail() + " authenticated");
 	}
 }

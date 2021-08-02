@@ -1,5 +1,6 @@
 package com.beardtrust.webapp.userservice.controllers;
 
+import com.beardtrust.webapp.userservice.models.RegistrationResponse;
 import com.beardtrust.webapp.userservice.models.UserRegistration;
 import com.beardtrust.webapp.userservice.services.UserRegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,6 @@ import javax.ws.rs.Consumes;
  */
 @RestController
 @RequestMapping(path = "/users")
-@CrossOrigin
 public class UserRegistrationController {
 
 	private final UserRegistrationService userRegistrationService;
@@ -42,11 +42,12 @@ public class UserRegistrationController {
 	 */
 	@PostMapping
 	@Consumes({MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-	public ResponseEntity<String> registerUser(@Valid @RequestBody UserRegistration body) {
-		ResponseEntity<String> response = null;
-		String userId = userRegistrationService.registerUser(body);
-		if (userId != null) {
-			response = new ResponseEntity<>(userId, HttpStatus.CREATED);
+	public ResponseEntity<RegistrationResponse> registerUser(@Valid @RequestBody UserRegistration body) {
+		ResponseEntity<RegistrationResponse> response = null;
+		RegistrationResponse registrationResponse = new RegistrationResponse();
+		registrationResponse.setUserId(userRegistrationService.registerUser(body));
+		if (registrationResponse.getUserId() != null && registrationResponse.getUserId().length() > 0) {
+			response = new ResponseEntity<>(registrationResponse, HttpStatus.CREATED);
 		}
 
 		return response;
