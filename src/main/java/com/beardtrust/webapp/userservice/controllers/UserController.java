@@ -6,6 +6,9 @@ import com.beardtrust.webapp.userservice.models.UserRegistration;
 import com.beardtrust.webapp.userservice.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.ws.rs.Consumes;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -67,10 +72,24 @@ public class UserController {
 		userService.save(user);
 	}
 
+
+	@PreAuthorize("hasAuthorith('admin')")
 	@GetMapping(path = "/admin/users")
-	@PreAuthorize("hasAuthority('admin')")
-	public List<UserEntity> displayAllUsers() {
-		return userService.getAll();
+	public Map<String, Object> findPaginated(@RequestParam("page") int page, @RequestParam("size") int size, @RequestParam(value = "sort", required = false) String sort, @RequestParam(value="asc", required = false) boolean asc, @RequestParam(value="search", required = false) String search) {
+
+		Page<UserEntity> resultPage;
+		if (sort == null) {
+			resultPage = userService.findPaginated(PageRequest.of(page, size), search);
+		} else {
+			resultPage = userService.findPaginated(PageRequest.of(page, size, Sort.by(asc ? Sort.Direction.ASC : Sort.Direction.DESC, sort)), search);
+		}
+
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("totalElements", resultPage.getTotalElements());
+		map.put("totalPages", resultPage.getTotalPages());
+		map.put("pageNumber", resultPage.getNumber());
+		map.put("content", resultPage.getContent());
+		return map;
 	}
 
 	@GetMapping("/admin/users/{id}")

@@ -12,6 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -243,4 +245,17 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findById(account_id);
 	}
 
+	@Override
+	public Page<UserEntity> findPaginated(Pageable pageable, String search) {
+		Page<UserEntity> page;
+		if (search == null) {
+			page = userRepository.findAll(pageable);
+		} else {
+			page = userRepository.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(search, search, search, search, search, pageable);
+		}
+		for (UserEntity user : page) {
+			user.setPassword(null);
+		}
+		return page;
+	}
 }

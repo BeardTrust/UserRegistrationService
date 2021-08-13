@@ -3,6 +3,8 @@ package com.beardtrust.webapp.userservice.services;
 import com.beardtrust.webapp.userservice.dtos.UserDTO;
 import com.beardtrust.webapp.userservice.entities.UserEntity;
 import com.beardtrust.webapp.userservice.models.UserRegistration;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
@@ -50,4 +52,6 @@ public interface UserService extends UserDetailsService {
 	Optional<UserEntity> getSpecificUserInfos(String account_id);
 
 	String updateService(UserEntity u, String id);
+
+	Page<UserEntity> findPaginated(Pageable pageable, String search);
 }

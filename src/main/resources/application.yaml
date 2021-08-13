@@ -9,8 +9,6 @@ management:
         include: '*'
   server:
     port: ${ACTPORT:0}
-gateway:
-  ip: ${GATEWAY:192.168.0.10}
 spring:
   application:
     name: ${NAME:user-service}

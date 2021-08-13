@@ -23,6 +23,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
@@ -154,31 +155,6 @@ public class UserControllerTest {
 				.build()
 				.perform(deleteResult)
 				.andExpect(MockMvcResultMatchers.status().isOk());
-	}
-
-	@Test
-	public void testDisplayAllUsers() throws Exception {
-		when(this.userService.getAll()).thenReturn(new ArrayList<UserEntity>());
-		MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/admin/users");
-		MockMvcBuilders.standaloneSetup(this.userController)
-				.build()
-				.perform(requestBuilder)
-				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.content().contentType("application/json"))
-				.andExpect(MockMvcResultMatchers.content().string("[]"));
-	}
-
-	@Test
-	public void testDisplayAllUsers2() throws Exception {
-		when(this.userService.getAll()).thenReturn(new ArrayList<UserEntity>());
-		MockHttpServletRequestBuilder getResult = MockMvcRequestBuilders.get("/admin/users");
-		getResult.contentType("Not all who wander are lost");
-		MockMvcBuilders.standaloneSetup(this.userController)
-				.build()
-				.perform(getResult)
-				.andExpect(MockMvcResultMatchers.status().isOk())
-				.andExpect(MockMvcResultMatchers.content().contentType("application/json"))
-				.andExpect(MockMvcResultMatchers.content().string("[]"));
 	}
 
 	@Test
