@@ -2,7 +2,7 @@ package com.beardtrust.webapp.userservice.security;
 
 import com.beardtrust.webapp.userservice.services.AuthenticationService;
 import com.beardtrust.webapp.userservice.services.AuthorizationService;
-import com.beardtrust.webapp.userservice.services.UserRegistrationService;
+import com.beardtrust.webapp.userservice.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Description;
@@ -26,7 +26,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private final Environment environment;
-	private final UserRegistrationService userRegistrationService;
+	private final UserService userService;
 	private final PasswordEncoder passwordEncoder;
 	private final AuthorizationService authorizationService;
 	private final AuthenticationService authenticationService;
@@ -35,15 +35,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 * Instantiates a new Security config.
 	 *
 	 * @param environment             the environment
-	 * @param userRegistrationService
+	 * @param userService
 	 * @param passwordEncoder
 	 * @param authorizationService
 	 * @param authenticationService
 	 */
 	@Autowired
-	public SecurityConfig(Environment environment, UserRegistrationService userRegistrationService, PasswordEncoder passwordEncoder, AuthorizationService authorizationService, AuthenticationService authenticationService) {
+	public SecurityConfig(Environment environment, UserService userService, PasswordEncoder passwordEncoder, AuthorizationService authorizationService, AuthenticationService authenticationService) {
 		this.environment = environment;
-		this.userRegistrationService = userRegistrationService;
+		this.userService = userService;
 		this.passwordEncoder = passwordEncoder;
 		this.authorizationService = authorizationService;
 		this.authenticationService = authenticationService;
@@ -67,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userRegistrationService).passwordEncoder(passwordEncoder);
+		auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
 	}
 
 	private AuthenticationFilter getAuthenticationFilter() throws Exception {

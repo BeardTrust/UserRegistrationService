@@ -19,7 +19,7 @@
 /stor/Coding/test2/UserService/src/main/java/com/beardtrust/webapp/userservice/repos/AuthorizationRepository.java
 /stor/Coding/test2/UserService/src/main/java/com/beardtrust/webapp/userservice/models/LoginRequestModel.java
 /stor/Coding/test2/UserService/src/main/java/com/beardtrust/webapp/userservice/controllers/UserInfoController.java
-/stor/Coding/test2/UserService/src/main/java/com/beardtrust/webapp/userservice/models/RegistrationResponse.java
 /stor/Coding/test2/UserService/src/main/java/com/beardtrust/webapp/userservice/models/UserRegistration.java
+/stor/Coding/test2/UserService/src/main/java/com/beardtrust/webapp/userservice/models/RegistrationResponse.java
 /stor/Coding/test2/UserService/src/main/java/com/beardtrust/webapp/userservice/services/UserRegistrationServiceImpl.java
 /stor/Coding/test2/UserService/src/main/java/com/beardtrust/webapp/userservice/services/AuthenticationServiceImpl.java
