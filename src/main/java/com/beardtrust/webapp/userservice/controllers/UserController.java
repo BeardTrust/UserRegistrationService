@@ -73,7 +73,7 @@ public class UserController {
 	}
 
 
-	@PreAuthorize("hasAuthorith('admin')")
+	@PreAuthorize("hasAuthority('admin')")
 	@GetMapping(path = "/admin/users")
 	public Map<String, Object> findPaginated(@RequestParam("page") int page, @RequestParam("size") int size, @RequestParam(value = "sort", required = false) String sort, @RequestParam(value="asc", required = false) boolean asc, @RequestParam(value="search", required = false) String search) {
 
@@ -107,7 +107,7 @@ public class UserController {
 	}
 
 	@DeleteMapping("/admin/users/{id}")
-	@PreAuthorize("principal == #id")
+	@PreAuthorize("hasAuthority('admin') or principal == #id")
 	public void deleteUser(@PathVariable String id) {
 		userService.deleteById(id);
 	}
