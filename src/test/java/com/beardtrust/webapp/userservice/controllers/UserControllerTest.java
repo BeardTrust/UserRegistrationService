@@ -23,7 +23,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
@@ -61,7 +60,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -76,7 +75,7 @@ public class UserControllerTest {
 		userEntity1.setEmail("jane.doe@example.org");
 		userEntity1.setRole("Role");
 		userEntity1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity1.setUserId("42");
+		userEntity1.setId("42");
 		userEntity1.setUsername("janedoe");
 		userEntity1.setPhone("4105551212");
 		userEntity1.setFirstName("Jane");
@@ -118,7 +117,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -165,7 +164,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -190,7 +189,7 @@ public class UserControllerTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(null);
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -214,7 +213,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(null);
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -240,7 +239,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(null);
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");

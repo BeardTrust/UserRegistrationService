@@ -24,7 +24,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -41,7 +41,7 @@ public class UserDTOTest {
 		actualUserDTO.setLastName("Doe");
 		actualUserDTO.setPhone("4105551212");
 		actualUserDTO.setRole("Role");
-		actualUserDTO.setUserId("42");
+		actualUserDTO.setId("42");
 		actualUserDTO.setUsername("janedoe");
 		assertSame(ofEpochDayResult, actualUserDTO.getDateOfBirth());
 		assertEquals("jane.doe@example.org", actualUserDTO.getEmail());
@@ -49,7 +49,7 @@ public class UserDTOTest {
 		assertEquals("Doe", actualUserDTO.getLastName());
 		assertEquals("4105551212", actualUserDTO.getPhone());
 		assertEquals("Role", actualUserDTO.getRole());
-		assertEquals("42", actualUserDTO.getUserId());
+		assertEquals("42", actualUserDTO.getId());
 		assertEquals("janedoe", actualUserDTO.getUsername());
 	}
 
@@ -60,7 +60,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -74,7 +74,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole(null);
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -84,7 +84,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -98,7 +98,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(0L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -108,7 +108,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -122,7 +122,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(null);
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -132,7 +132,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -146,7 +146,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId(null);
+		userDTO.setId(null);
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -156,7 +156,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -170,7 +170,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("janedoe");
+		userDTO.setId("janedoe");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -180,7 +180,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -194,7 +194,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("42");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -204,7 +204,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -218,7 +218,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername(null);
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -228,7 +228,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -242,7 +242,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("+44 1865 4960636");
 		userDTO.setFirstName("Jane");
@@ -252,7 +252,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -266,7 +266,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone(null);
 		userDTO.setFirstName("Jane");
@@ -276,7 +276,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -290,7 +290,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("42");
@@ -300,7 +300,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -314,7 +314,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -328,7 +328,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName(null);
@@ -338,7 +338,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -352,7 +352,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -362,7 +362,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -378,7 +378,7 @@ public class UserDTOTest {
 		userDTO.setEmail(null);
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -388,7 +388,7 @@ public class UserDTOTest {
 		userDTO1.setEmail(null);
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -404,7 +404,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -420,7 +420,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -430,7 +430,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -446,7 +446,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -456,7 +456,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -470,7 +470,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -480,7 +480,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -494,7 +494,7 @@ public class UserDTOTest {
 		userDTO.setEmail("42");
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -504,7 +504,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -518,7 +518,7 @@ public class UserDTOTest {
 		userDTO.setEmail(null);
 		userDTO.setRole("Role");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -528,7 +528,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");
@@ -542,7 +542,7 @@ public class UserDTOTest {
 		userDTO.setEmail("jane.doe@example.org");
 		userDTO.setRole("42");
 		userDTO.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO.setUserId("42");
+		userDTO.setId("42");
 		userDTO.setUsername("janedoe");
 		userDTO.setPhone("4105551212");
 		userDTO.setFirstName("Jane");
@@ -552,7 +552,7 @@ public class UserDTOTest {
 		userDTO1.setEmail("jane.doe@example.org");
 		userDTO1.setRole("Role");
 		userDTO1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userDTO1.setUserId("42");
+		userDTO1.setId("42");
 		userDTO1.setUsername("janedoe");
 		userDTO1.setPhone("4105551212");
 		userDTO1.setFirstName("Jane");

@@ -32,7 +32,7 @@ public class AuthorizationServiceImpl implements AuthorizationService {
 
 	@Override
 	public UserDTO getUserByUserId(String id) {
-		Optional<UserEntity> user = authorizationRepository.findByUserId(id);
+		Optional<UserEntity> user = authorizationRepository.findById(id);
 
 		UserDTO userDTO = null;
 
