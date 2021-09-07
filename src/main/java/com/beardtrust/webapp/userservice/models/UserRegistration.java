@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Data
 public class UserRegistration {
 
-	private String userId;
+	private String id;
 	@NotBlank(message = "A username must be provided")
 	private String username;
 	@NotBlank(message = "A password must be provided")

@@ -65,7 +65,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -77,7 +77,7 @@ public class UserServiceImplTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -93,7 +93,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail(null);
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -105,7 +105,7 @@ public class UserServiceImplTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -121,7 +121,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("jane.doe@example.org");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -133,7 +133,7 @@ public class UserServiceImplTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -149,7 +149,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -158,7 +158,7 @@ public class UserServiceImplTest {
 		UserDTO actualDisplayUserResult = this.userServiceImpl.displayUser("42");
 		assertEquals("1970-01-02", actualDisplayUserResult.getDateOfBirth().toString());
 		assertEquals("janedoe", actualDisplayUserResult.getUsername());
-		assertEquals("42", actualDisplayUserResult.getUserId());
+		assertEquals("42", actualDisplayUserResult.getId());
 		assertEquals("Role", actualDisplayUserResult.getRole());
 		assertEquals("4105551212", actualDisplayUserResult.getPhone());
 		assertEquals("Doe", actualDisplayUserResult.getLastName());
@@ -176,7 +176,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -185,7 +185,7 @@ public class UserServiceImplTest {
 		UserDTO actualDisplayUserResult = this.userServiceImpl.displayUser("42");
 		assertEquals("1970-01-02", actualDisplayUserResult.getDateOfBirth().toString());
 		assertEquals("janedoe", actualDisplayUserResult.getUsername());
-		assertEquals("42", actualDisplayUserResult.getUserId());
+		assertEquals("42", actualDisplayUserResult.getId());
 		assertEquals("Role", actualDisplayUserResult.getRole());
 		assertEquals("4105551212", actualDisplayUserResult.getPhone());
 		assertEquals("Last Name", actualDisplayUserResult.getLastName());
@@ -203,7 +203,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -212,7 +212,7 @@ public class UserServiceImplTest {
 		UserDTO actualDisplayUserResult = this.userServiceImpl.displayUser("42");
 		assertEquals("1970-01-02", actualDisplayUserResult.getDateOfBirth().toString());
 		assertEquals("janedoe", actualDisplayUserResult.getUsername());
-		assertEquals("42", actualDisplayUserResult.getUserId());
+		assertEquals("42", actualDisplayUserResult.getId());
 		assertEquals("Role", actualDisplayUserResult.getRole());
 		assertEquals("4105551212", actualDisplayUserResult.getPhone());
 		assertEquals("com.beardtrust.webapp.userservice.entities.UserEntity", actualDisplayUserResult.getLastName());
@@ -230,7 +230,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -239,7 +239,7 @@ public class UserServiceImplTest {
 		UserDTO actualDisplayUserResult = this.userServiceImpl.displayUser("42");
 		assertEquals("1970-01-02", actualDisplayUserResult.getDateOfBirth().toString());
 		assertEquals("janedoe", actualDisplayUserResult.getUsername());
-		assertEquals("42", actualDisplayUserResult.getUserId());
+		assertEquals("42", actualDisplayUserResult.getId());
 		assertEquals("Role", actualDisplayUserResult.getRole());
 		assertEquals("4105551212", actualDisplayUserResult.getPhone());
 		assertEquals("42", actualDisplayUserResult.getLastName());
@@ -257,7 +257,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(null);
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -266,7 +266,7 @@ public class UserServiceImplTest {
 		UserDTO actualDisplayUserResult = this.userServiceImpl.displayUser("42");
 		assertNull(actualDisplayUserResult.getDateOfBirth());
 		assertEquals("janedoe", actualDisplayUserResult.getUsername());
-		assertEquals("42", actualDisplayUserResult.getUserId());
+		assertEquals("42", actualDisplayUserResult.getId());
 		assertEquals("Role", actualDisplayUserResult.getRole());
 		assertEquals("4105551212", actualDisplayUserResult.getPhone());
 		assertEquals("Doe", actualDisplayUserResult.getLastName());
@@ -292,7 +292,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -300,7 +300,7 @@ public class UserServiceImplTest {
 		UserDTO actualUserDetailsByEmail = this.userServiceImpl.getUserDetailsByEmail("janedoe");
 		assertEquals("1970-01-02", actualUserDetailsByEmail.getDateOfBirth().toString());
 		assertEquals("janedoe", actualUserDetailsByEmail.getUsername());
-		assertEquals("42", actualUserDetailsByEmail.getUserId());
+		assertEquals("42", actualUserDetailsByEmail.getId());
 		assertEquals("Role", actualUserDetailsByEmail.getRole());
 		assertEquals("4105551212", actualUserDetailsByEmail.getPhone());
 		assertEquals("Doe", actualUserDetailsByEmail.getLastName());
@@ -318,7 +318,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -326,7 +326,7 @@ public class UserServiceImplTest {
 		UserDTO actualUserDetailsByEmail = this.userServiceImpl.getUserDetailsByEmail("janedoe");
 		assertEquals("1970-01-02", actualUserDetailsByEmail.getDateOfBirth().toString());
 		assertEquals("janedoe", actualUserDetailsByEmail.getUsername());
-		assertEquals("42", actualUserDetailsByEmail.getUserId());
+		assertEquals("42", actualUserDetailsByEmail.getId());
 		assertEquals("Role", actualUserDetailsByEmail.getRole());
 		assertEquals("4105551212", actualUserDetailsByEmail.getPhone());
 		assertNull(actualUserDetailsByEmail.getLastName());
@@ -344,7 +344,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -352,7 +352,7 @@ public class UserServiceImplTest {
 		UserDTO actualUserDetailsByEmail = this.userServiceImpl.getUserDetailsByEmail("janedoe");
 		assertEquals("1970-01-02", actualUserDetailsByEmail.getDateOfBirth().toString());
 		assertEquals("janedoe", actualUserDetailsByEmail.getUsername());
-		assertEquals("42", actualUserDetailsByEmail.getUserId());
+		assertEquals("42", actualUserDetailsByEmail.getId());
 		assertEquals("Role", actualUserDetailsByEmail.getRole());
 		assertEquals("4105551212", actualUserDetailsByEmail.getPhone());
 		assertEquals("42", actualUserDetailsByEmail.getLastName());
@@ -370,7 +370,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -406,7 +406,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -432,7 +432,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -472,7 +472,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -510,7 +510,7 @@ public class UserServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");

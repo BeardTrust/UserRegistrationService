@@ -25,7 +25,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -43,7 +43,7 @@ public class UserRegistrationTest {
 		actualUserRegistration.setPassword("iloveyou");
 		actualUserRegistration.setPhone("4105551212");
 		actualUserRegistration.setRole("Role");
-		actualUserRegistration.setUserId("42");
+		actualUserRegistration.setId("42");
 		actualUserRegistration.setUsername("janedoe");
 		assertSame(ofEpochDayResult, actualUserRegistration.getDateOfBirth());
 		assertEquals("jane.doe@example.org", actualUserRegistration.getEmail());
@@ -52,7 +52,7 @@ public class UserRegistrationTest {
 		assertEquals("iloveyou", actualUserRegistration.getPassword());
 		assertEquals("4105551212", actualUserRegistration.getPhone());
 		assertEquals("Role", actualUserRegistration.getRole());
-		assertEquals("42", actualUserRegistration.getUserId());
+		assertEquals("42", actualUserRegistration.getId());
 		assertEquals("janedoe", actualUserRegistration.getUsername());
 		assertEquals(
 				"UserRegistration(userId=42, username=janedoe, password=iloveyou, email=jane.doe@example.org,"
@@ -68,7 +68,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -83,7 +83,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail(null);
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -94,7 +94,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -109,7 +109,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("42");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -120,7 +120,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -135,7 +135,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole(null);
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -146,7 +146,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -161,7 +161,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(0L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -172,7 +172,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -187,7 +187,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(null);
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -198,7 +198,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -213,7 +213,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId(null);
+		userRegistration.setId(null);
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -224,7 +224,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -239,7 +239,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("janedoe");
+		userRegistration.setId("janedoe");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -250,7 +250,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -265,7 +265,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("42");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -276,7 +276,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -291,7 +291,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername(null);
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -302,7 +302,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -317,7 +317,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("+44 1865 4960636");
 		userRegistration.setFirstName("Jane");
@@ -328,7 +328,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -343,7 +343,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -358,7 +358,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone(null);
 		userRegistration.setFirstName("Jane");
@@ -369,7 +369,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -384,7 +384,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("42");
@@ -395,7 +395,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -410,7 +410,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName(null);
@@ -421,7 +421,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -436,7 +436,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -453,7 +453,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -464,7 +464,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -481,7 +481,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -492,7 +492,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -507,7 +507,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -518,7 +518,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -533,7 +533,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -544,7 +544,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -559,7 +559,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("jane.doe@example.org");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -570,7 +570,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");
@@ -585,7 +585,7 @@ public class UserRegistrationTest {
 		userRegistration.setEmail("42");
 		userRegistration.setRole("Role");
 		userRegistration.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration.setUserId("42");
+		userRegistration.setId("42");
 		userRegistration.setUsername("janedoe");
 		userRegistration.setPhone("4105551212");
 		userRegistration.setFirstName("Jane");
@@ -596,7 +596,7 @@ public class UserRegistrationTest {
 		userRegistration1.setEmail("jane.doe@example.org");
 		userRegistration1.setRole("Role");
 		userRegistration1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userRegistration1.setUserId("42");
+		userRegistration1.setId("42");
 		userRegistration1.setUsername("janedoe");
 		userRegistration1.setPhone("4105551212");
 		userRegistration1.setFirstName("Jane");

@@ -42,7 +42,7 @@ public class AuthenticationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -56,7 +56,7 @@ public class AuthenticationServiceImplTest {
 		assertEquals("4105551212", actualUserDetailsByEmail.getPhone());
 		assertEquals("Jane", actualUserDetailsByEmail.getFirstName());
 		assertEquals("Role", actualUserDetailsByEmail.getRole());
-		assertEquals("42", actualUserDetailsByEmail.getUserId());
+		assertEquals("42", actualUserDetailsByEmail.getId());
 		verify(this.userRepository).findByEmail(anyString());
 	}
 
@@ -68,7 +68,7 @@ public class AuthenticationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -97,7 +97,7 @@ public class AuthenticationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("admin");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -114,7 +114,7 @@ public class AuthenticationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("user");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
