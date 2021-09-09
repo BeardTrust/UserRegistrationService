@@ -24,3 +24,7 @@ hs_err_pid*
 
 # Target folder
 target/*
+
+# Intellij Files
+*.iml
+.idea/*

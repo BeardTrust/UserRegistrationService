@@ -1,0 +1,39 @@
+server:
+  port: ${PORT:7777}
+  servlet:
+    context-path: /api
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  server:
+    port: ${ACTPORT:0}
+spring:
+  application:
+    name: ${NAME:user-service}
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  datasource:
+    url: jdbc:mariadb://beardtrustdb.cibsfknyd6zy.us-east-2.rds.amazonaws.com/BeardTrust_Dev
+    username: basileios
+    password: EBzrA8x6OcRfZL00dzG9uND6yXANpMetzr7K
+    driver-class-name: org.mariadb.jdbc.Driver
+authorization:
+  token:
+    header:
+      name: Authorization
+      prefix: Bearer
+token:
+  secret: aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj04WnEzS0NCZWQ1UQo=
+  expiration: 864000000
+login:
+  url:
+    path: /login
+eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka
