@@ -60,7 +60,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setId("42");
+		userEntity.setUserId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -75,7 +75,7 @@ public class UserControllerTest {
 		userEntity1.setEmail("jane.doe@example.org");
 		userEntity1.setRole("Role");
 		userEntity1.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity1.setId("42");
+		userEntity1.setUserId("42");
 		userEntity1.setUsername("janedoe");
 		userEntity1.setPhone("4105551212");
 		userEntity1.setFirstName("Jane");
@@ -117,7 +117,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setId("42");
+		userEntity.setUserId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -164,7 +164,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setId("42");
+		userEntity.setUserId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -213,7 +213,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(null);
-		userEntity.setId("42");
+		userEntity.setUserId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -239,7 +239,7 @@ public class UserControllerTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(null);
-		userEntity.setId("42");
+		userEntity.setUserId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");

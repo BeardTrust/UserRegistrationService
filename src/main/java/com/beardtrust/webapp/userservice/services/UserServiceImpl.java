@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         UserEntity userEntity = modelMapper.map(userRegistration, UserEntity.class);
-        userEntity.setId(UUID.randomUUID().toString());
+        userEntity.setUserId(UUID.randomUUID().toString());
         userEntity.setRole("user");
 
         return modelMapper.map(userRepository.save(userEntity), UserDTO.class);
@@ -153,7 +153,7 @@ public class UserServiceImpl implements UserService {
         Optional<UserEntity> user = userRepository.findById(userId);
         UserDTO userDetails = null;
         if (user.isPresent()) {
-            log.info("UserEntity " + user.get().getId() + " located in database");
+            log.info("UserEntity " + user.get().getUserId() + " located in database");
             ModelMapper modelMapper = new ModelMapper();
             userDetails = modelMapper.map(user.get(), UserDTO.class);
         }
@@ -227,7 +227,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void save(UserEntity user) {
         if (user.getPassword() == null) {
-            Optional<UserEntity> ouser = userRepository.findById(user.getId());
+            Optional<UserEntity> ouser = userRepository.findById(user.getUserId());
             user.setPassword(ouser.get().getPassword());
         } else {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -238,7 +238,7 @@ public class UserServiceImpl implements UserService {
     public String updateService(UserEntity u, String id) {
         Optional<UserEntity> ouser = userRepository.findById(id);
         if (ouser.isPresent()) {
-            u.setId(ouser.get().getId());
+            u.setUserId(ouser.get().getUserId());
             u.setRole(ouser.get().getRole());
             userRepository.save(u);
             return "Update complete!";

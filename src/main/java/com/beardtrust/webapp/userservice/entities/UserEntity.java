@@ -20,7 +20,7 @@ import java.util.UUID;
 public class UserEntity implements Serializable {
 	@Id
 	@Column(unique = true)
-	private String id;
+	private String userId;
 	@Column(unique = true)
 	private String username;
 	@JsonBackReference
@@ -42,7 +42,7 @@ public class UserEntity implements Serializable {
 	 * Instantiates a new UserEntity.
 	 */
 	public UserEntity() {
-		this.id = UUID.randomUUID().toString();
+		this.userId = UUID.randomUUID().toString();
 	}
 
 	/**
@@ -50,8 +50,8 @@ public class UserEntity implements Serializable {
 	 *
 	 * @return the user id
 	 */
-	public String getId() {
-		return id;
+	public String getUserId() {
+		return userId;
 	}
 
 	/**
@@ -59,8 +59,8 @@ public class UserEntity implements Serializable {
 	 *
 	 * @param userId the user id
 	 */
-	public void setId(String userId) {
-		this.id = userId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	/**
@@ -212,18 +212,18 @@ public class UserEntity implements Serializable {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		UserEntity that = (UserEntity) o;
-		return Objects.equals(id, that.id) && Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(email, that.email) && Objects.equals(phone, that.phone) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(dateOfBirth, that.dateOfBirth) && Objects.equals(role, that.role);
+		return Objects.equals(userId, that.userId) && Objects.equals(username, that.username) && Objects.equals(password, that.password) && Objects.equals(email, that.email) && Objects.equals(phone, that.phone) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(dateOfBirth, that.dateOfBirth) && Objects.equals(role, that.role);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, username, password, email, phone, firstName, lastName, dateOfBirth, role);
+		return Objects.hash(userId, username, password, email, phone, firstName, lastName, dateOfBirth, role);
 	}
 
 	@Override
 	public String toString() {
 		return "UserEntity{" +
-				"userId='" + id + '\'' +
+				"userId='" + userId + '\'' +
 				", username='" + username + '\'' +
 				", password='" + password + '\'' +
 				", email='" + email + '\'' +
