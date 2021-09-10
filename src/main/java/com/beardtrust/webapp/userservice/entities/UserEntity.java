@@ -18,8 +18,9 @@ import java.util.UUID;
 @Entity
 @Table(name = "users")
 public class UserEntity implements Serializable {
+	private static final long serialVersionUID = -8426134977411636998L;
 	@Id
-	@Column(unique = true)
+	@Column(name = "user_id", unique = true)
 	private String id;
 	@Column(unique = true)
 	private String username;
