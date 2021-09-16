@@ -33,7 +33,3 @@ token:
 login:
   url:
     path: /login
-eureka:
-  client:
-    service-url:
-      default-zone: http://discovery-service:8761/eureka
