@@ -45,6 +45,12 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.userService = userService;
 	}
+	
+	@GetMapping(path = "/health")
+        @Consumes({MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+        public ResponseEntity<String> healthCheck() {
+            return new ResponseEntity<>("Healthy", HttpStatus.OK);
+        }
 
 	/**
 	 * Processes an incoming request to register a new user and routes that request to
