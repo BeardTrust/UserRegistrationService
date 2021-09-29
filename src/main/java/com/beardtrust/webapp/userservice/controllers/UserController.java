@@ -68,7 +68,7 @@ public class UserController {
 	
 	@GetMapping(path = "/health")
         @Consumes({MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-        public ResponseEntity<RegistrationResponse> registerUser(@Valid @RequestBody UserRegistration body) {
+        public ResponseEntity<RegistrationResponse> healthCkeck() {
         ResponseEntity<RegistrationResponse> response = null;
             response = new ResponseEntity<>(registrationResponse, HttpStatus.OK);
             return response;
