@@ -65,6 +65,14 @@ public class UserController {
 
 		return response;
 	}
+	
+	@GetMapping(path = "/health")
+        @Consumes({MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+        public ResponseEntity<RegistrationResponse> registerUser(@Valid @RequestBody UserRegistration body) {
+        ResponseEntity<RegistrationResponse> response = null;
+            response = new ResponseEntity<>(registrationResponse, HttpStatus.OK);
+            return response;
+       }
 
 	@PostMapping(path = "/admin/users")
 	@PreAuthorize("hasAuthority('admin')")
