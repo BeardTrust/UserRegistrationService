@@ -51,7 +51,7 @@ public class UserController {
 	@GetMapping(path = "/users/health")
         @Consumes({MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
         public ResponseEntity<String> healthCheck() {
-            log.info("Health Check Incoming CORS Test 1");
+            log.info("Health Check Incoming");
             return new ResponseEntity<>("Healthy", HttpStatus.OK);
         }
 
