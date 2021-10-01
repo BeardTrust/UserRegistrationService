@@ -30,6 +30,7 @@ import java.util.Optional;
  * @author Davis Hill
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/")
 @Slf4j
 public class UserController {
