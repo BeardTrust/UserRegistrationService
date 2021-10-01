@@ -48,7 +48,7 @@ public class UserController {
 	}
 	
         @PreAuthorize("permitAll()")
-	@GetMapping(path = "/health")
+	@GetMapping(path = "/users/health")
         @Consumes({MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
         public ResponseEntity<String> healthCheck() {
             log.info("Health Check Incoming");
