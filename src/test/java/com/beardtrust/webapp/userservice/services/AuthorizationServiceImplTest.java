@@ -79,7 +79,7 @@ public class AuthorizationServiceImplTest {
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Jane", actualUserByUserId.getFirstName());
 		assertEquals("Role", actualUserByUserId.getRole());
-		assertEquals("42", actualUserByUserId.getId());
+		assertEquals(null, actualUserByUserId.getId());
 		verify(this.authorizationRepository).findById(anyString());
 	}
 
@@ -106,7 +106,7 @@ public class AuthorizationServiceImplTest {
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Jane", actualUserByUserId.getFirstName());
 		assertEquals("Role", actualUserByUserId.getRole());
-		assertEquals("42", actualUserByUserId.getId());
+		assertEquals(null, actualUserByUserId.getId());
 		verify(this.authorizationRepository).findById(anyString());
 	}
 
@@ -127,7 +127,7 @@ public class AuthorizationServiceImplTest {
 		UserDTO actualUserByUserId = this.authorizationServiceImpl.getUserByUserId("42");
 		assertNull(actualUserByUserId.getDateOfBirth());
 		assertEquals("janedoe", actualUserByUserId.getUsername());
-		assertEquals("42", actualUserByUserId.getId());
+		assertEquals(null, actualUserByUserId.getId());
 		assertEquals("Role", actualUserByUserId.getRole());
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Doe", actualUserByUserId.getLastName());
