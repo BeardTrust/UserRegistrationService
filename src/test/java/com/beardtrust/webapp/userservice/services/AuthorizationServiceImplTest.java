@@ -52,7 +52,7 @@ public class AuthorizationServiceImplTest {
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Jane", actualUserByUserId.getFirstName());
 		assertEquals("Role", actualUserByUserId.getRole());
-		assertEquals("42", actualUserByUserId.getId());
+		assertEquals("null", actualUserByUserId.getId());
 		verify(this.authorizationRepository).findById(anyString());
 	}
 
@@ -79,7 +79,7 @@ public class AuthorizationServiceImplTest {
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Jane", actualUserByUserId.getFirstName());
 		assertEquals("Role", actualUserByUserId.getRole());
-		assertEquals("42", actualUserByUserId.getId());
+		assertEquals("null", actualUserByUserId.getId());
 		verify(this.authorizationRepository).findById(anyString());
 	}
 
@@ -106,7 +106,7 @@ public class AuthorizationServiceImplTest {
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Jane", actualUserByUserId.getFirstName());
 		assertEquals("Role", actualUserByUserId.getRole());
-		assertEquals("42", actualUserByUserId.getId());
+		assertEquals("null", actualUserByUserId.getId());
 		verify(this.authorizationRepository).findById(anyString());
 	}
 
@@ -118,7 +118,7 @@ public class AuthorizationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(null);
-		userEntity.setUserId("42");
+		userEntity.setUserId("null");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
