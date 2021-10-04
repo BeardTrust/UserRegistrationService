@@ -37,14 +37,14 @@ public class AuthorizationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setUserId("null");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
 		Optional<UserEntity> ofResult = Optional.<UserEntity>of(userEntity);
 		when(this.authorizationRepository.findById(anyString())).thenReturn(ofResult);
 		UserDTO actualUserByUserId = this.authorizationServiceImpl.getUserByUserId("42");
-		assertEquals("UserDTO(id=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
+		assertEquals("UserDTO(id=null, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
 				+ " lastName=Doe, dateOfBirth=1970-01-02, role=Role)", actualUserByUserId.toString());
 		assertEquals("jane.doe@example.org", actualUserByUserId.getEmail());
 		assertEquals("Doe", actualUserByUserId.getLastName());
@@ -64,14 +64,14 @@ public class AuthorizationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setUserId("null");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
 		Optional<UserEntity> ofResult = Optional.<UserEntity>of(userEntity);
 		when(this.authorizationRepository.findById(anyString())).thenReturn(ofResult);
 		UserDTO actualUserByUserId = this.authorizationServiceImpl.getUserByUserId("42");
-		assertEquals("UserDTO(id=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
+		assertEquals("UserDTO(id=null, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
 				+ " lastName=Last Name, dateOfBirth=1970-01-02, role=Role)", actualUserByUserId.toString());
 		assertEquals("jane.doe@example.org", actualUserByUserId.getEmail());
 		assertEquals("Last Name", actualUserByUserId.getLastName());
@@ -91,14 +91,14 @@ public class AuthorizationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
+		userEntity.setUserId("null");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
 		Optional<UserEntity> ofResult = Optional.<UserEntity>of(userEntity);
 		when(this.authorizationRepository.findById(anyString())).thenReturn(ofResult);
 		UserDTO actualUserByUserId = this.authorizationServiceImpl.getUserByUserId("42");
-		assertEquals("UserDTO(id=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
+		assertEquals("UserDTO(id=null, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
 				+ " lastName=42, dateOfBirth=1970-01-02, role=Role)", actualUserByUserId.toString());
 		assertEquals("jane.doe@example.org", actualUserByUserId.getEmail());
 		assertEquals("42", actualUserByUserId.getLastName());
@@ -127,7 +127,7 @@ public class AuthorizationServiceImplTest {
 		UserDTO actualUserByUserId = this.authorizationServiceImpl.getUserByUserId("42");
 		assertNull(actualUserByUserId.getDateOfBirth());
 		assertEquals("janedoe", actualUserByUserId.getUsername());
-		assertEquals("42", actualUserByUserId.getId());
+		assertEquals("null", actualUserByUserId.getId());
 		assertEquals("Role", actualUserByUserId.getRole());
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Doe", actualUserByUserId.getLastName());
