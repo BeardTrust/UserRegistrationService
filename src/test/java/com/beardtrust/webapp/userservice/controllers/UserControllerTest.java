@@ -131,7 +131,7 @@ public class UserControllerTest {
 				.andExpect(MockMvcResultMatchers.content().contentType("application/json"))
 				.andExpect(MockMvcResultMatchers.content()
 						.string(
-								"{\"userId\":\"42\",\"username\":\"janedoe\",\"password\":\"iloveyou\",\"email\":\"jane.doe@example.org\",\"phone\":"
+								"{\"userId\":\"42\",\"username\":\"janedoe\",\"email\":\"jane.doe@example.org\",\"phone\":"
 										+ "\"4105551212\",\"firstName\":\"Jane\",\"lastName\":\"Doe\",\"dateOfBirth\":[1970,1,2],\"role\":\"Role\"}"));
 	}
 

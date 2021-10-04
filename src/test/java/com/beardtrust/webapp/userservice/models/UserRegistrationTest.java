@@ -55,7 +55,7 @@ public class UserRegistrationTest {
 		assertEquals("42", actualUserRegistration.getId());
 		assertEquals("janedoe", actualUserRegistration.getUsername());
 		assertEquals(
-				"UserRegistration(userId=42, username=janedoe, password=iloveyou, email=jane.doe@example.org,"
+				"UserRegistration(userId=42, username=janedoe, email=jane.doe@example.org,"
 						+ " phone=4105551212, firstName=Jane, lastName=Doe, dateOfBirth=1970-01-02, role=Role)",
 				actualUserRegistration.toString());
 	}
