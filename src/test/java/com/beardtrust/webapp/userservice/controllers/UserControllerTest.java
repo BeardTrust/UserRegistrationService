@@ -79,7 +79,7 @@ public class UserControllerTest {
 		userEntity1.setUsername("janedoe");
 		userEntity1.setPhone("4105551212");
 		userEntity1.setFirstName("Jane");
-		//userController.createUser(userEntity1);
+		//[userController.createUser(userEntity1);
 		verify(userRepository).save((UserEntity) any());
 		assertTrue(userController.getAllUserInfos().isEmpty());
 	}
@@ -177,7 +177,7 @@ public class UserControllerTest {
 				.andExpect(MockMvcResultMatchers.content().contentType("application/json"))
 				.andExpect(MockMvcResultMatchers.content()
 						.string(
-								"{\"userId\":\"42\",\"username\":\"janedoe\",\"password\":\"iloveyou\",\"email\":\"jane.doe@example.org\",\"phone\":"
+								"{\"userId\":\"42\",\"username\":\"janedoe\",\"email\":\"jane.doe@example.org\",\"phone\":"
 										+ "\"4105551212\",\"firstName\":\"Jane\",\"lastName\":\"Doe\",\"dateOfBirth\":[1970,1,2],\"role\":\"Role\"}"));
 	}
 
