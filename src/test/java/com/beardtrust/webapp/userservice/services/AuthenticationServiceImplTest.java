@@ -48,7 +48,7 @@ public class AuthenticationServiceImplTest {
 		userEntity.setFirstName("Jane");
 		when(this.userRepository.findByEmail(anyString())).thenReturn(userEntity);
 		UserDTO actualUserDetailsByEmail = this.authenticationServiceImpl.getUserDetailsByEmail("jane.doe@example.org");
-		assertEquals("UserDTO(userId=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
+		assertEquals("UserDTO(id=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
 				+ " lastName=Doe, dateOfBirth=1970-01-02, role=Role)", actualUserDetailsByEmail.toString());
 		assertEquals("jane.doe@example.org", actualUserDetailsByEmail.getEmail());
 		assertEquals("Doe", actualUserDetailsByEmail.getLastName());

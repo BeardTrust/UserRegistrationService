@@ -44,7 +44,7 @@ public class AuthorizationServiceImplTest {
 		Optional<UserEntity> ofResult = Optional.<UserEntity>of(userEntity);
 		when(this.authorizationRepository.findById(anyString())).thenReturn(ofResult);
 		UserDTO actualUserByUserId = this.authorizationServiceImpl.getUserByUserId("42");
-		assertEquals("UserDTO(userId=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
+		assertEquals("UserDTO(id=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
 				+ " lastName=Doe, dateOfBirth=1970-01-02, role=Role)", actualUserByUserId.toString());
 		assertEquals("jane.doe@example.org", actualUserByUserId.getEmail());
 		assertEquals("Doe", actualUserByUserId.getLastName());
@@ -71,7 +71,7 @@ public class AuthorizationServiceImplTest {
 		Optional<UserEntity> ofResult = Optional.<UserEntity>of(userEntity);
 		when(this.authorizationRepository.findById(anyString())).thenReturn(ofResult);
 		UserDTO actualUserByUserId = this.authorizationServiceImpl.getUserByUserId("42");
-		assertEquals("UserDTO(userId=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
+		assertEquals("UserDTO(id=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
 				+ " lastName=Last Name, dateOfBirth=1970-01-02, role=Role)", actualUserByUserId.toString());
 		assertEquals("jane.doe@example.org", actualUserByUserId.getEmail());
 		assertEquals("Last Name", actualUserByUserId.getLastName());
@@ -98,7 +98,7 @@ public class AuthorizationServiceImplTest {
 		Optional<UserEntity> ofResult = Optional.<UserEntity>of(userEntity);
 		when(this.authorizationRepository.findById(anyString())).thenReturn(ofResult);
 		UserDTO actualUserByUserId = this.authorizationServiceImpl.getUserByUserId("42");
-		assertEquals("UserDTO(userId=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
+		assertEquals("UserDTO(id=42, username=janedoe, email=jane.doe@example.org, phone=4105551212, firstName=Jane,"
 				+ " lastName=42, dateOfBirth=1970-01-02, role=Role)", actualUserByUserId.toString());
 		assertEquals("jane.doe@example.org", actualUserByUserId.getEmail());
 		assertEquals("42", actualUserByUserId.getLastName());
