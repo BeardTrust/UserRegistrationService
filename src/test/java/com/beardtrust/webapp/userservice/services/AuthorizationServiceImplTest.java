@@ -37,7 +37,7 @@ public class AuthorizationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("null");
+		userEntity.setUserId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -52,7 +52,7 @@ public class AuthorizationServiceImplTest {
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Jane", actualUserByUserId.getFirstName());
 		assertEquals("Role", actualUserByUserId.getRole());
-		assertEquals("null", actualUserByUserId.getId());
+		assertEquals("42", actualUserByUserId.getId());
 		verify(this.authorizationRepository).findById(anyString());
 	}
 
@@ -64,7 +64,7 @@ public class AuthorizationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("null");
+		userEntity.setUserId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -79,7 +79,7 @@ public class AuthorizationServiceImplTest {
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Jane", actualUserByUserId.getFirstName());
 		assertEquals("Role", actualUserByUserId.getRole());
-		assertEquals("null", actualUserByUserId.getId());
+		assertEquals("42", actualUserByUserId.getId());
 		verify(this.authorizationRepository).findById(anyString());
 	}
 
@@ -91,7 +91,7 @@ public class AuthorizationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("null");
+		userEntity.setUserId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -106,7 +106,7 @@ public class AuthorizationServiceImplTest {
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Jane", actualUserByUserId.getFirstName());
 		assertEquals("Role", actualUserByUserId.getRole());
-		assertEquals("null", actualUserByUserId.getId());
+		assertEquals("42", actualUserByUserId.getId());
 		verify(this.authorizationRepository).findById(anyString());
 	}
 
@@ -118,7 +118,7 @@ public class AuthorizationServiceImplTest {
 		userEntity.setEmail("jane.doe@example.org");
 		userEntity.setRole("Role");
 		userEntity.setDateOfBirth(null);
-		userEntity.setUserId("null");
+		userEntity.setUserId("42");
 		userEntity.setUsername("janedoe");
 		userEntity.setPhone("4105551212");
 		userEntity.setFirstName("Jane");
@@ -127,7 +127,7 @@ public class AuthorizationServiceImplTest {
 		UserDTO actualUserByUserId = this.authorizationServiceImpl.getUserByUserId("42");
 		assertNull(actualUserByUserId.getDateOfBirth());
 		assertEquals("janedoe", actualUserByUserId.getUsername());
-		assertEquals("null", actualUserByUserId.getId());
+		assertEquals("42", actualUserByUserId.getId());
 		assertEquals("Role", actualUserByUserId.getRole());
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Doe", actualUserByUserId.getLastName());
