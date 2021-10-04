@@ -63,7 +63,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new AuthorizationFilter(authenticationManager(), environment, authorizationService))
-                .configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
                 .addFilter(getAuthenticationFilter());
         http.headers().frameOptions().disable();
     }
