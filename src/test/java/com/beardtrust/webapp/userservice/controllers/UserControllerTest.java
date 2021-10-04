@@ -79,7 +79,7 @@ public class UserControllerTest {
 		userEntity1.setUsername("janedoe");
 		userEntity1.setPhone("4105551212");
 		userEntity1.setFirstName("Jane");
-		userController.createUser(userEntity1);
+		//userController.createUser(userEntity1);
 		verify(userRepository).save((UserEntity) any());
 		assertTrue(userController.getAllUserInfos().isEmpty());
 	}
