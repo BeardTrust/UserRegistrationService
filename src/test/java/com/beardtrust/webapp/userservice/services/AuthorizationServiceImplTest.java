@@ -52,7 +52,7 @@ public class AuthorizationServiceImplTest {
 		assertEquals("4105551212", actualUserByUserId.getPhone());
 		assertEquals("Jane", actualUserByUserId.getFirstName());
 		assertEquals("Role", actualUserByUserId.getRole());
-		assertEquals("null", actualUserByUserId.getId());
+		assertEquals(null, actualUserByUserId.getId());
 		verify(this.authorizationRepository).findById(anyString());
 	}
 
