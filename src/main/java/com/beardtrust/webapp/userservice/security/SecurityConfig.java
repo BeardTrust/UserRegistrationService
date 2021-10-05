@@ -65,7 +65,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilter(new AuthorizationFilter(authenticationManager(), environment, authorizationService))
                 .addFilter(getAuthenticationFilter());
         http.headers().frameOptions().disable();
-        http.formLogin().permitAll();
     }
 
     @Override
