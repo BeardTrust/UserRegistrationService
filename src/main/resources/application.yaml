@@ -31,4 +31,4 @@ token:
   expiration: 864000000
 login:
   url:
-    path: /login
+    path: /users/login
