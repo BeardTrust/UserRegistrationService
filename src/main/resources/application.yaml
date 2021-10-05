@@ -1,7 +1,5 @@
 server:
   port: ${PORT:7777}
-  servlet:
-    context-path: /api
 management:
   endpoints:
     web:

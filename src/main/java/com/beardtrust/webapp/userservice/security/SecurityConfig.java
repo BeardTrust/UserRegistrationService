@@ -25,56 +25,57 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	private final Environment environment;
-	private final UserService userService;
-	private final PasswordEncoder passwordEncoder;
-	private final AuthorizationService authorizationService;
-	private final AuthenticationService authenticationService;
+    private final Environment environment;
+    private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthorizationService authorizationService;
+    private final AuthenticationService authenticationService;
 
-	/**
-	 * Instantiates a new Security config.
-	 *
-	 * @param environment             the environment
-	 * @param userService
-	 * @param passwordEncoder
-	 * @param authorizationService
-	 * @param authenticationService
-	 */
-	@Autowired
-	public SecurityConfig(Environment environment, UserService userService, PasswordEncoder passwordEncoder, AuthorizationService authorizationService, AuthenticationService authenticationService) {
-		this.environment = environment;
-		this.userService = userService;
-		this.passwordEncoder = passwordEncoder;
-		this.authorizationService = authorizationService;
-		this.authenticationService = authenticationService;
-	}
+    /**
+     * Instantiates a new Security config.
+     *
+     * @param environment the environment
+     * @param userService
+     * @param passwordEncoder
+     * @param authorizationService
+     * @param authenticationService
+     */
+    @Autowired
+    public SecurityConfig(Environment environment, UserService userService, PasswordEncoder passwordEncoder, AuthorizationService authorizationService, AuthenticationService authenticationService) {
+        this.environment = environment;
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+        this.authorizationService = authorizationService;
+        this.authenticationService = authenticationService;
+    }
 
-	@Description("Configure HTTP Security")
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.csrf().disable();
-		http.cors()
-				.and().authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/users").permitAll()
-				.antMatchers(HttpMethod.POST, "/admin/users").permitAll()
-				.antMatchers(HttpMethod.POST, "/login").permitAll()
-				.antMatchers("/h2-console/**").permitAll()
-				.anyRequest().authenticated()
-				.and()
-				.addFilter(new AuthorizationFilter(authenticationManager(), environment, authorizationService))
-				.addFilter(getAuthenticationFilter());
-		http.headers().frameOptions().disable();
-	}
+    @Description("Configure HTTP Security")
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http.cors()
+                .and().authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/users").permitAll()
+                .antMatchers(HttpMethod.POST, "/admin/users").permitAll()
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .antMatchers(HttpMethod.GET, "/users/health").permitAll()
+                .antMatchers("/h2-console/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .addFilter(new AuthorizationFilter(authenticationManager(), environment, authorizationService))
+                .addFilter(getAuthenticationFilter());
+        http.headers().frameOptions().disable();
+    }
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
-	}
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
+    }
 
-	private AuthenticationFilter getAuthenticationFilter() throws Exception {
-		AuthenticationFilter filter = new AuthenticationFilter(authenticationService, environment, authenticationManager());
-		filter.setFilterProcessesUrl(environment.getProperty("login.url.path"));
+    private AuthenticationFilter getAuthenticationFilter() throws Exception {
+        AuthenticationFilter filter = new AuthenticationFilter(authenticationService, environment, authenticationManager());
+        filter.setFilterProcessesUrl(environment.getProperty("login.url.path"));
 
-		return filter;
-	}
+        return filter;
+    }
 }
