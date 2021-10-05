@@ -60,11 +60,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .antMatchers(HttpMethod.POST, "/admin/users").permitAll()
                 .antMatchers(HttpMethod.GET, "/users/health").permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .addFilter(new AuthorizationFilter(authenticationManager(), environment, authorizationService))
                 .addFilter(getAuthenticationFilter());
         http.headers().frameOptions().disable();
+        http.formLogin().permitAll();
     }
 
     @Override
