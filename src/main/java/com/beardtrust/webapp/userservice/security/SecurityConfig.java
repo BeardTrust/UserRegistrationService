@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 */
 	@Autowired
 	public SecurityConfig(Environment environment, UserService userService, PasswordEncoder passwordEncoder, AuthorizationService authorizationService, AuthenticationService authenticationService) {
+            log.trace("Building security configuration...");
 		this.environment = environment;
 		this.userService = userService;
 		this.passwordEncoder = passwordEncoder;
@@ -52,6 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Description("Configure HTTP Security")
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+            log.trace("Configuring HTTP Security...");
 		http.csrf().disable();
 		http.cors()
 				.and().authorizeRequests()
@@ -68,13 +70,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+            log.trace("Configuring Authentication...");
 		auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
 	}
 
 	private AuthenticationFilter getAuthenticationFilter() throws Exception {
+            log.trace("Getting Authentication filter...");
 		AuthenticationFilter filter = new AuthenticationFilter(authenticationService, environment, authenticationManager());
 		filter.setFilterProcessesUrl(environment.getProperty("login.url.path"));
-
+                log.debug("Filter to return: " + filter);
 		return filter;
 	}
 }
