@@ -30,6 +30,7 @@ import java.util.Optional;
  * @author Davis Hill
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/")
 @Slf4j
 public class UserController {
@@ -46,6 +47,14 @@ public class UserController {
             log.trace("Creating user controller...");
 		this.userService = userService;
 	}
+	
+        @PreAuthorize("permitAll()")
+	@GetMapping(path = "/users/health")
+        @Consumes({MediaType.ALL_VALUE, MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+        public ResponseEntity<String> healthCheck() {
+            log.info("Health Check Incoming");
+            return new ResponseEntity<>("Healthy", HttpStatus.OK);
+        }
 
 	/**
 	 * Processes an incoming request to register a new user and routes that request to

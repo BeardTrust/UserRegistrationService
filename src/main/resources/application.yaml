@@ -1,7 +1,5 @@
 server:
   port: ${PORT:7777}
-  servlet:
-    context-path: /api
 management:
   endpoints:
     web:
@@ -17,6 +15,7 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
+      path: /users/h2-console
   datasource:
     url: jdbc:mariadb://beardtrustdb.czyy1xbuk4j2.us-east-2.rds.amazonaws.com/BeardTrust_Test
     username: basileios
@@ -32,4 +31,4 @@ token:
   expiration: 864000000
 login:
   url:
-    path: /login
+    path: /users/login

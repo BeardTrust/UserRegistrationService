@@ -1,4 +1,6 @@
 FROM openjdk:11
-LABEL maintainer="Matthew.Crowell@Smoothstack.com"
-ADD target/userservice-0.0.1-SNAPSHOT.jar userservice.jar
-ENTRYPOINT ["java", "-jar", "userservice.jar"]
+MAINTAINER Matthew.Crowell@Smoothstack.com
+RUN adduser --system --group discoveryservice
+USER discoveryservice:discoveryservice
+COPY target/userservice-0.0.1-SNAPSHOT.jar userservice.jar
+ENTRYPOINT ["java", "-jar", "userservice.jar", "--spring.profiles.active=dev"]

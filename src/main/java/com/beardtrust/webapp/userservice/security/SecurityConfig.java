@@ -25,11 +25,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Slf4j
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	private final Environment environment;
-	private final UserService userService;
-	private final PasswordEncoder passwordEncoder;
-	private final AuthorizationService authorizationService;
-	private final AuthenticationService authenticationService;
+    private final Environment environment;
+    private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
+    private final AuthorizationService authorizationService;
+    private final AuthenticationService authenticationService;
 
 	/**
 	 * Instantiates a new Security config.
