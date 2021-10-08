@@ -47,6 +47,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 	public AuthenticationFilter(AuthenticationService authenticationService, Environment environment,
 								AuthenticationManager authenticationManager) {
 		log.info("Creating authentication filter");
+                log.trace("Creating authentication filter");
 		this.authenticationService = authenticationService;
 		this.environment = environment;
 		super.setAuthenticationManager(authenticationManager);
@@ -54,6 +55,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
+            log.trace("Attempting Authentication...");
 		Authentication auth = null;
 
 		try {
@@ -61,6 +63,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 					LoginRequestModel.class);
 
 			log.info("Attempting to authenticate user " + credentials.getEmail());
+                        log.trace("Attempting to authenticate user...");
+                        log.debug("User email authenticating: " + credentials.getEmail());
 
 			List<GrantedAuthority> authorities = new ArrayList<>();
 
@@ -69,50 +73,62 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 			UsernamePasswordAuthenticationToken token = null;
 
 			if(request.getHeader("LR-Type").equals(userDTO.getRole())){
+                            log.trace("LR-Type found...");
 				if (userDTO.getRole().equals("admin")) {
+                                    log.trace("LR-Type admin...");
 					SimpleGrantedAuthority admin = new SimpleGrantedAuthority("admin");
 					authorities.add(admin);
 				} else if (userDTO.getRole().equals("user")) {
+                                    log.trace("LR-Type user...");
 					SimpleGrantedAuthority user = new SimpleGrantedAuthority("user");
 					authorities.add(user);
 				}
-
+                                log.trace("Creating token...");
 				token = new UsernamePasswordAuthenticationToken(credentials.getEmail(),
 						credentials.getPassword(), authorities);
+                                log.debug("Token created: " + token);
 			} else {
+                            log.warn("LR-Type not found...");
 				token = new UsernamePasswordAuthenticationToken(ROLE_REQUEST_MISMATCH, ROLE_REQUEST_MISMATCH, authorities);
 			}
-
+                        log.trace("Creating authentication...");
 			auth = getAuthenticationManager().authenticate(token);
+                        log.debug("Authentication created: " + auth);
 		} catch (IOException e) {
 			log.error("IOException thrown during authentication attempt");
 			throw new RuntimeException(e);
 		}
-
+                log.trace("Returning authentication...");
 		return auth;
 	}
 
 	@Override
 	protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) {
+            log.trace("Authentication successful...");
 		String username = ((User) authResult.getPrincipal()).getUsername();
+                log.debug("Username authenticated: " + username);
 
 		UserDTO userDetails = null;
 
 		try {
+                    log.trace("Trying to get authentication by username...");
 			userDetails = authenticationService.getUserDetailsByEmail(username);
 		} catch (UsernameNotFoundException e) {
-			log.error("User not found");
+			log.error("User not found!!!");
 		}
-
+                log.trace("Building token...");
 		String token = Jwts.builder()
 				.setSubject(userDetails.getId())
 				.setExpiration(new Date(System.currentTimeMillis() +
 						Long.parseLong(environment.getProperty("token.expiration"))))
 				.signWith(SignatureAlgorithm.HS512, environment.getProperty("token.secret"))
 				.compact();
+                log.debug("Token created: " + token);
 
 		response.addHeader("Authorization", environment.getProperty("authorization.token.header.prefix") + " " + token);
         response.addHeader("BTUID", userDetails.getId());
 		log.info("User " + userDetails.getEmail() + " authenticated");
+                log.trace("User authenticated...");
+                log.debug("Email authenticayed: " + userDetails.getEmail());
 	}
 }
