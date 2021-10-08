@@ -33,16 +33,21 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 	 */
 	@ExceptionHandler(DuplicateEntryException.class)
 	public ResponseEntity<Object> handleDuplicateEntryException(DuplicateEntryException e, WebRequest request) {
+                log.trace("Handling duplicate registration...");
 		log.warn(String.format("Encountered duplicate entry exception in %s", request.toString()));
 		Map<String, Object> body = new LinkedHashMap<>();
 		body.put("timestamp", LocalDateTime.now());
 		body.put("message", e.getMessage());
-
+                log.trace("Returning duplication conflict...");
 		return new ResponseEntity<>(body, HttpStatus.CONFLICT);
 	}
 
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException e, HttpHeaders headers, HttpStatus status, WebRequest request) {
+            log.trace("HTTP invalid argument found...");
+            log.debug("Headers found: " + headers.toString());
+            log.debug("Status found: " + status.toString());
+            log.debug("Request found: " + request.toString());
 		log.warn(String.format("Encountered method argument not valid exception in %s", request.toString()));
 
 		Map<String, Object> body = new LinkedHashMap<>();
@@ -53,7 +58,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 			String message = error.getDefaultMessage();
 			body.put(name, message);
 		}
-
+                log.trace("Returning bad request...");
 		return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
 	}
 

@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Objects;
 import java.util.Set;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * This class represents Transaction type.
@@ -15,6 +16,7 @@ import java.util.Set;
  * @author Matthew Crowell <Matthew.Crowell@Smoothstack.com>
  */
 @Entity
+@Slf4j
 public class TransactionType {
 	@Id
 	private int typeId;
@@ -43,11 +45,13 @@ public class TransactionType {
 	 * @param targetDescription String the target description
 	 */
 	public TransactionType(int typeId, String typeName, String typeDescription, String sourceDescription, String targetDescription) {
+            log.trace("Creating new transaction type...");
 		this.typeId = typeId;
 		this.typeName = typeName;
 		this.typeDescription = typeDescription;
 		this.sourceDescription = sourceDescription;
 		this.targetDescription = targetDescription;
+                log.info("Transaction type created: " + this.toString());
 	}
 
 	/**

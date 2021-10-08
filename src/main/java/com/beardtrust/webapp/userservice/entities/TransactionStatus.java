@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Objects;
 import java.util.Set;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * This class represents a Transaction status.
@@ -15,6 +16,7 @@ import java.util.Set;
  * @author Matthew Crowell <Matthew.Crowell@Smoothstack.com>
  */
 @Entity
+@Slf4j
 public class TransactionStatus {
 	@Id
 	private int statusId;
@@ -39,9 +41,11 @@ public class TransactionStatus {
 	 * @param statusDescription String the status description
 	 */
 	public TransactionStatus(int statusId, String statusName, String statusDescription) {
+            log.trace("Creating transaction status...");
 		this.statusId = statusId;
 		this.statusName = statusName;
 		this.statusDescription = statusDescription;
+                log.info("Transaction status created: " + this.toString());
 	}
 
 	/**

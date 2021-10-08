@@ -43,26 +43,37 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 	@Override
 	public UserDTO getUserDetailsByEmail(String email) {
+            log.trace("Authentication searching by email...");
+            log.debug("Email searched by: " + email);
 		UserEntity userEntity = repository.findByEmail(email);
 
 		if (userEntity == null) {
+                    log.warn("Authentication couldn't find user by email!!!");
 			throw new UsernameNotFoundException(email);
 		}
 
 		ModelMapper modelMapper = new ModelMapper();
-		return modelMapper.map(userEntity, UserDTO.class);
+		UserDTO auth = modelMapper.map(userEntity, UserDTO.class);
+                log.trace("Returning Authenticated user DTO...");
+                log.debug("UserDTO created: " + auth);
+                return auth;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+            log.trace("Authentication loading by username...");
+            log.debug("Username searched by: " + s);
 		UserEntity userEntity = repository.findByEmail(s);
 
-		if (userEntity == null) throw new UsernameNotFoundException(s);
+		if (userEntity == null) {
+                    log.error("User not found!!!");
+                    throw new UsernameNotFoundException(s);
+                }
 
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		SimpleGrantedAuthority role = new SimpleGrantedAuthority(userEntity.getRole());
 		authorities.add(role);
-
+                log.trace("Authorities granted. Returning user details...");
 		return new User(userEntity.getEmail(), userEntity.getPassword(), true, true, true, true, authorities);
 	}
 }
