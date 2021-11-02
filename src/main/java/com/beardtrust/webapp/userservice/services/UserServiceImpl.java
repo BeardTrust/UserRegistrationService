@@ -185,7 +185,6 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException(username);
         }
         log.trace("Returning user DTO...");
-        log.debug("DTO to return: " + ModelMapper().map(user, UserDTO.class));
         return new ModelMapper().map(user, UserDTO.class);
     }
 
