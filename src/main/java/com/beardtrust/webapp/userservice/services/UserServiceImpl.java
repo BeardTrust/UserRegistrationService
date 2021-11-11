@@ -1,9 +1,6 @@
 package com.beardtrust.webapp.userservice.services;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 import com.beardtrust.webapp.userservice.dtos.UserDTO;
 import com.beardtrust.webapp.userservice.exceptions.DuplicateEntryException;
@@ -13,7 +10,9 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -305,8 +304,13 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(account_id);
     }
 
-    @Override
-    public Page<UserEntity> findPaginated(Pageable pageable, String search) {
+    public Page<UserEntity> findPaginated(int pageNumber, int pageSize, String[] sortBy, String search) {
+        List<Sort.Order> orders = parseOrders(sortBy);
+        for (int i = 0; i < sortBy.length; i++) {
+            System.out.println(sortBy[i]);
+        }
+        System.out.println("orders parsed: " + orders);
+        Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(orders));
         log.trace("Searching for users entities with pagination...");
         log.debug("Page data provided: " + pageable);
         log.debug("Search provided: " + search);
@@ -325,5 +329,44 @@ public class UserServiceImpl implements UserService {
         log.trace("Returning page...");
         log.debug("Page created: " + page);
         return page;
+    }
+
+    /**
+     * This method accepts a string and returns the intended sort direction, ascending or descending.
+     *
+     * @param direction String the string indicating the desired sort direction
+     * @return Sort.Direction the direction in which to sort
+     */
+    private Sort.Direction getSortDirection(String direction) {
+        Sort.Direction returnValue = Sort.Direction.ASC;
+
+        if (direction.equals("desc")) {
+            returnValue = Sort.Direction.DESC;
+        }
+
+        return returnValue;
+    }
+
+    /**
+     * This method takes an array of strings, sortBy, and parses that string to produce
+     * a list of sort orders to use.
+     *
+     * @param sortBy String[] the string of sorting instructions
+     * @return List<Sort.Order> the parsed collection of sorting instructions
+     */
+    private List<Sort.Order> parseOrders(String[] sortBy) {
+        List<Sort.Order> orders = new ArrayList<>();
+        if (sortBy.length > 2) {
+            for (int i = 0; i < sortBy.length; i++) {
+                String sort = sortBy[i];
+                String dir = sortBy[i + 1];
+                orders.add(new Sort.Order(getSortDirection(dir), sort));
+                i++;
+            }
+        } else {
+            orders.add(new Sort.Order(getSortDirection(sortBy[1]), sortBy[0]));
+        }
+
+        return orders;
     }
 }

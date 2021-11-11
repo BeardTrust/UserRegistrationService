@@ -53,5 +53,5 @@ public interface UserService extends UserDetailsService {
 
 	String updateService(UserEntity u, String id);
 
-	Page<UserEntity> findPaginated(Pageable pageable, String search);
+	Page<UserEntity> findPaginated(int num, int size, String[] sort, String search);
 }
