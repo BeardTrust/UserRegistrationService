@@ -306,9 +306,6 @@ public class UserServiceImpl implements UserService {
 
     public Page<UserEntity> findPaginated(int pageNumber, int pageSize, String[] sortBy, String search) {
         List<Sort.Order> orders = parseOrders(sortBy);
-        for (int i = 0; i < sortBy.length; i++) {
-            System.out.println(sortBy[i]);
-        }
         System.out.println("orders parsed: " + orders);
         Pageable pageable = PageRequest.of(pageNumber, pageSize, Sort.by(orders));
         log.trace("Searching for users entities with pagination...");
