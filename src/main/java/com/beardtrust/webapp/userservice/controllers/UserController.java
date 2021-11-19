@@ -81,17 +81,17 @@ public class UserController {
 
 	@PreAuthorize("hasAuthority('admin')")
 	@GetMapping(path = "/admin/users")
-	public Map<String, Object> findPaginated(@RequestParam("page") int page, @RequestParam("size") int size, @RequestParam(value = "sort", required = false) String sort, @RequestParam(value="asc", required = false) boolean asc, @RequestParam(value="search", required = false) String search) {
-            log.trace("Find paginated endpoint reached...");
+	public Map<String, Object> findPaginated(@RequestParam("page") int page, @RequestParam("size") int pageSize, @RequestParam(value = "sortBy", required = false, defaultValue = "userId,asc") String[] sortBy, @RequestParam(value="asc", required = false) boolean asc, @RequestParam(value="search", required = false) String search) {
+		log.trace("Find paginated endpoint reached...");
 
 		Page<UserEntity> resultPage;
-		if (sort == null) {
-                    log.trace("No sorting found, paginating without sort...");
-			resultPage = userService.findPaginated(PageRequest.of(page, size), search);
-		} else {
-                    log.trace("Sort present, paginating with sorting...");
-			resultPage = userService.findPaginated(PageRequest.of(page, size, Sort.by(asc ? Sort.Direction.ASC : Sort.Direction.DESC, sort)), search);
-		}
+//		if (sortBy == null) {
+//                    log.trace("No sorting found, paginating without sort...");
+//			resultPage = userService.findPaginated(PageRequest.of(page, pageSize), search);
+//		} else {
+		log.trace("Sort present, paginating with sorting...");
+		resultPage = userService.findPaginated(page, pageSize, sortBy, search);
+//	}
                 log.trace("Building and returning map object...");
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("totalElements", resultPage.getTotalElements());

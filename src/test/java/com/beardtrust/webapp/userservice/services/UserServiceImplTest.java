@@ -485,67 +485,67 @@ public class UserServiceImplTest {
 		assertTrue(this.userServiceImpl.getAll().isEmpty());
 	}
 
-	@Test
-	public void testFindPaginated() {
-		PageImpl<UserEntity> pageImpl = new PageImpl<UserEntity>(new ArrayList<UserEntity>());
-		when(this.userRepository
-				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
-						anyString(), anyString(), anyString(), anyString(), anyString(),
-						(org.springframework.data.domain.Pageable) any())).thenReturn(pageImpl);
-		Page<UserEntity> actualFindPaginatedResult = this.userServiceImpl.findPaginated(null, "Search");
-		assertSame(pageImpl, actualFindPaginatedResult);
-		assertTrue(actualFindPaginatedResult.toList().isEmpty());
-		verify(this.userRepository)
-				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
-						anyString(), anyString(), anyString(), anyString(), anyString(),
-						(org.springframework.data.domain.Pageable) any());
-		assertTrue(this.userServiceImpl.getAll().isEmpty());
-	}
+//	@Test
+//	public void testFindPaginated() {
+//		PageImpl<UserEntity> pageImpl = new PageImpl<UserEntity>(new ArrayList<UserEntity>());
+//		when(this.userRepository
+//				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
+//						anyString(), anyString(), anyString(), anyString(), anyString(),
+//						(org.springframework.data.domain.Pageable) any())).thenReturn(pageImpl);
+//		Page<UserEntity> actualFindPaginatedResult = this.userServiceImpl.findPaginated(null, "Search");
+//		assertSame(pageImpl, actualFindPaginatedResult);
+//		assertTrue(actualFindPaginatedResult.toList().isEmpty());
+//		verify(this.userRepository)
+//				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
+//						anyString(), anyString(), anyString(), anyString(), anyString(),
+//						(org.springframework.data.domain.Pageable) any());
+//		assertTrue(this.userServiceImpl.getAll().isEmpty());
+//	}
 
-	@Test
-	public void testFindPaginated2() {
-		UserEntity userEntity = new UserEntity();
-		userEntity.setLastName("Doe");
-		userEntity.setPassword("iloveyou");
-		userEntity.setEmail("jane.doe@example.org");
-		userEntity.setRole("Role");
-		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
-		userEntity.setUserId("42");
-		userEntity.setUsername("janedoe");
-		userEntity.setPhone("4105551212");
-		userEntity.setFirstName("Jane");
-
-		ArrayList<UserEntity> userEntityList = new ArrayList<UserEntity>();
-		userEntityList.add(userEntity);
-		PageImpl<UserEntity> pageImpl = new PageImpl<UserEntity>(userEntityList);
-		when(this.userRepository
-				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
-						anyString(), anyString(), anyString(), anyString(), anyString(),
-						(org.springframework.data.domain.Pageable) any())).thenReturn(pageImpl);
-		Page<UserEntity> actualFindPaginatedResult = this.userServiceImpl.findPaginated(null, "Search");
-		assertSame(pageImpl, actualFindPaginatedResult);
-		assertEquals(1, actualFindPaginatedResult.toList().size());
-		verify(this.userRepository)
-				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
-						anyString(), anyString(), anyString(), anyString(), anyString(),
-						(org.springframework.data.domain.Pageable) any());
-		assertTrue(this.userServiceImpl.getAll().isEmpty());
-	}
-
-	@Test
-	public void testFindPaginated3() {
-		PageImpl<UserEntity> pageImpl = new PageImpl<UserEntity>(new ArrayList<UserEntity>());
-		when(this.userRepository.findAll((org.springframework.data.domain.Pageable) any())).thenReturn(pageImpl);
-		when(this.userRepository
-				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
-						anyString(), anyString(), anyString(), anyString(), anyString(),
-						(org.springframework.data.domain.Pageable) any()))
-				.thenReturn(new PageImpl<UserEntity>(new ArrayList<UserEntity>()));
-		Page<UserEntity> actualFindPaginatedResult = this.userServiceImpl.findPaginated(null, null);
-		assertSame(pageImpl, actualFindPaginatedResult);
-		assertTrue(actualFindPaginatedResult.toList().isEmpty());
-		verify(this.userRepository).findAll((org.springframework.data.domain.Pageable) any());
-		assertTrue(this.userServiceImpl.getAll().isEmpty());
-	}
+//	@Test
+//	public void testFindPaginated2() {
+//		UserEntity userEntity = new UserEntity();
+//		userEntity.setLastName("Doe");
+//		userEntity.setPassword("iloveyou");
+//		userEntity.setEmail("jane.doe@example.org");
+//		userEntity.setRole("Role");
+//		userEntity.setDateOfBirth(LocalDate.ofEpochDay(1L));
+//		userEntity.setUserId("42");
+//		userEntity.setUsername("janedoe");
+//		userEntity.setPhone("4105551212");
+//		userEntity.setFirstName("Jane");
+//
+//		ArrayList<UserEntity> userEntityList = new ArrayList<UserEntity>();
+//		userEntityList.add(userEntity);
+//		PageImpl<UserEntity> pageImpl = new PageImpl<UserEntity>(userEntityList);
+//		when(this.userRepository
+//				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
+//						anyString(), anyString(), anyString(), anyString(), anyString(),
+//						(org.springframework.data.domain.Pageable) any())).thenReturn(pageImpl);
+//		Page<UserEntity> actualFindPaginatedResult = this.userServiceImpl.findPaginated(null, "Search");
+//		assertSame(pageImpl, actualFindPaginatedResult);
+//		assertEquals(1, actualFindPaginatedResult.toList().size());
+//		verify(this.userRepository)
+//				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
+//						anyString(), anyString(), anyString(), anyString(), anyString(),
+//						(org.springframework.data.domain.Pageable) any());
+//		assertTrue(this.userServiceImpl.getAll().isEmpty());
+//	}
+//
+//	@Test
+//	public void testFindPaginated3() {
+//		PageImpl<UserEntity> pageImpl = new PageImpl<UserEntity>(new ArrayList<UserEntity>());
+//		when(this.userRepository.findAll((org.springframework.data.domain.Pageable) any())).thenReturn(pageImpl);
+//		when(this.userRepository
+//				.findAllByFirstNameContainsIgnoreCaseOrLastNameContainsIgnoreCaseOrUsernameContainsIgnoreCaseOrEmailContainsIgnoreCaseOrPhoneContainsIgnoreCase(
+//						anyString(), anyString(), anyString(), anyString(), anyString(),
+//						(org.springframework.data.domain.Pageable) any()))
+//				.thenReturn(new PageImpl<UserEntity>(new ArrayList<UserEntity>()));
+//		Page<UserEntity> actualFindPaginatedResult = this.userServiceImpl.findPaginated(null, null);
+//		assertSame(pageImpl, actualFindPaginatedResult);
+//		assertTrue(actualFindPaginatedResult.toList().isEmpty());
+//		verify(this.userRepository).findAll((org.springframework.data.domain.Pageable) any());
+//		assertTrue(this.userServiceImpl.getAll().isEmpty());
+//	}
 }
 
